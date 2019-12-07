@@ -127,6 +127,10 @@ project(":code/students-performance").name = "students-performance-Model"
 // Dijkstra algorithm
 include "code/dijkstra-algorithm/Model"
 project(":code/dijkstra-algorithm/Model").name = "dijkstra-algorithm-Model"
+include "code/dijkstra-algorithm/View"
+project(":code/dijkstra-algorithm/View").name = "dijkstra-algorithm-View"
+include "code/dijkstra-algorithm/ViewModel"
+project(":code/dijkstra-algorithm/ViewModel").name = "dijkstra-algorithm-ViewModel"
 // Смирнов Егор
 include "code/priority-queue"
 project(":code/priority-queue").name = "priority-queue"
