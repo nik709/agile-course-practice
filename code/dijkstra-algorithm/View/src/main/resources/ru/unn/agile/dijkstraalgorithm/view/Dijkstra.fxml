@@ -14,8 +14,8 @@
                <children>
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" text="Add one more edge" />
-                        <Button mnemonicParsing="false" text="Build a graph">
+                        <Button  fx:id="btnAddNewEdge" mnemonicParsing="false" text="Add one more edge" />
+                        <Button fx:id="btnCreateGraph" mnemonicParsing="false" text="Build a graph">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin></Button>
@@ -79,7 +79,7 @@
             </VBox>
             <VBox alignment="CENTER" layoutX="255.0" layoutY="20.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="45.0" layoutY="80.0" mnemonicParsing="false" prefWidth="200.0" text="Get result">
+                  <Button fx:id="btnGetPath" layoutX="45.0" layoutY="80.0" mnemonicParsing="false" prefWidth="200.0" text="Get result">
                      <font>
                         <Font size="18.0" />
                      </font>
