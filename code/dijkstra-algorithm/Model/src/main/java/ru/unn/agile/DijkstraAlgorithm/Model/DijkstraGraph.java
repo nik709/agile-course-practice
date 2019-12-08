@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
-class DijkstraGraph {
+public class DijkstraGraph {
 
     // mapping of vertex names to Vertex objects, built from a set of Edges
     private final Map<String, Vertex> graph;

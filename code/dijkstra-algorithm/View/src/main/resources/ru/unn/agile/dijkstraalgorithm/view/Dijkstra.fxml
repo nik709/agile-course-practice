@@ -6,108 +6,79 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.dijkstraalgorithm.view.Dijkstra">
+<?import ru.unn.agile.dijkstraalgorithm.viewmodel.ViewModel?>
+<AnchorPane
+        xmlns="http://javafx.com/javafx/8"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="ru.unn.agile.dijkstraalgorithm.view.Dijkstra">
+   <fx:define>
+      <ViewModel fx:id="viewModel"/>
+   </fx:define>
    <children>
-      <HBox prefHeight="250.0">
+      <VBox>
          <children>
-            <VBox>
+            <HBox>
                <children>
-                  <HBox>
+                  <VBox>
                      <children>
-                        <Button  fx:id="btnAddNewEdge" mnemonicParsing="false" text="Add one more edge" />
-                        <Button fx:id="btnCreateGraph" mnemonicParsing="false" text="Build a graph">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin></Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <TableView editable="true" prefWidth="225.0">
-                    <columns>
-                      <TableColumn maxWidth="100.0" prefWidth="75.0" text="Vertex 1" />
-                      <TableColumn maxWidth="100.0" prefWidth="75.0" text="Vertex 2" />
-                        <TableColumn maxWidth="100.0" prefWidth="75.0" text="Weight" />
-                    </columns>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TableView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefWidth="200.0">
-               <children>
-                  <Label text="Enter Path:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <HBox prefWidth="200.0">
-                     <children>
-                        <Label prefWidth="50.0" text="From">
-                           <padding>
+                        <Label text="Vertex1" />
+                        <TextField fx:id="vertex1TextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                           <VBox.margin>
                               <Insets top="5.0" />
-                           </padding>
-                        </Label>
-                        <ComboBox prefWidth="150.0" />
+                           </VBox.margin>
+                        </TextField>
                      </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="191.0" prefWidth="200.0">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0">
                      <children>
-                        <Label prefWidth="50.0" text="To">
-                           <padding>
+                        <Label text="Vertex2" />
+                        <TextField fx:id="vertex2TextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                           <VBox.margin>
                               <Insets top="5.0" />
-                           </padding>
-                        </Label>
-                        <ComboBox prefWidth="150.0" />
+                           </VBox.margin>
+                        </TextField>
                      </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="255.0" layoutY="20.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btnGetPath" layoutX="45.0" layoutY="80.0" mnemonicParsing="false" prefWidth="200.0" text="Get result">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox layoutX="85.0" layoutY="10.0">
+                     <children>
+                        <Label text="Weight" />
+                        <TextField fx:id="weightTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="addEdgeButton" mnemonicParsing="false" prefHeight="25.0" text="Add Edge">
+                     <HBox.margin>
+                        <Insets top="22.0" />
+                     </HBox.margin>
                   </Button>
-                  <Label layoutX="67.0" layoutY="149.0" prefWidth="200.0" text="Path:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField disable="true" editable="false" promptText="Path will be shown here" />
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </VBox>
+            </HBox>
+            <TableView fx:id="tableEdges">
+               <columns>
+                  <TableColumn fx:id="vertex1Column" maxWidth="100.0" minWidth="50.0" prefWidth="100.0" text="Vertex 1" />
+                  <TableColumn fx:id="vertex2Column" maxWidth="100.0" minWidth="75.0" prefWidth="100.0" text="Vertex 2" />
+                  <TableColumn fx:id="weightColumn" maxWidth="100.0" minWidth="75.0" prefWidth="100.0" text="Weight" />
+               </columns>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TableView>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>
