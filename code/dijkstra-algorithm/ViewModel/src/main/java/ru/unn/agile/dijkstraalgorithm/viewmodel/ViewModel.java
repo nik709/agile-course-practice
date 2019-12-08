@@ -57,8 +57,10 @@ public class ViewModel {
     }
 
     public boolean isVertex2InputCorrect() {
-        String exprText = vertex2.get().trim();
-        return (VERTEX_INPUT_AllOWED_SYMBOLES.matcher(exprText).matches());
+        String exprText2 = vertex2.get().trim();
+        String exprText1 = vertex1.get().trim();
+        return (VERTEX_INPUT_AllOWED_SYMBOLES.matcher(exprText2).matches() &&
+                !(exprText1.equals(exprText2)));
     }
 
     public boolean isWeightInputCorrect() {
