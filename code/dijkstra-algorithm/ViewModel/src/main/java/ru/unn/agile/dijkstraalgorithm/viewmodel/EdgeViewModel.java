@@ -53,4 +53,8 @@ public class EdgeViewModel {
     public void setWeight(String weight) {
         this.weight.set(Integer.parseInt(weight));
     }
+
+    public void setWeight(int weight) {
+        this.weight.set(weight);
+    }
 }

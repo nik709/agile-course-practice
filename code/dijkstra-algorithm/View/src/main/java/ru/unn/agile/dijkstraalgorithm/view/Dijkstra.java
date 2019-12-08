@@ -1,16 +1,18 @@
 package ru.unn.agile.dijkstraalgorithm.view;
 
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.EdgeViewModel;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.ViewModel;
 
 
 public class Dijkstra {
+
+    private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+    private final String vertexInputTooltip = "Only letters allowed";
+    private final String weightInputTooltip = "Only positive integer numbers allowed";
 
     @FXML
     private ViewModel viewModel;
@@ -37,13 +39,27 @@ public class Dijkstra {
     @FXML
     void initialize() {
         vertex1TextField.textProperty().bindBidirectional(viewModel.vertex1Property());
+        vertex1TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
+        viewModel.vertex1Property().addListener(obs -> setErrorBorder(vertex1TextField, !viewModel.isVertex1InputCorrect()));
+
         vertex2TextField.textProperty().bindBidirectional(viewModel.vertex2Property());
+        vertex2TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
+        viewModel.vertex2Property().addListener(obs -> setErrorBorder(vertex2TextField, !viewModel.isVertex2InputCorrect()));
+
         weightTextField.textProperty().bindBidirectional(viewModel.weightProperty());
+        weightTextField.tooltipProperty().setValue(new Tooltip(weightInputTooltip));
+        viewModel.weightProperty().addListener(obs -> setErrorBorder(weightTextField, !viewModel.isWeightInputCorrect()));
+
+        addEdgeButton.disableProperty().bindBidirectional(viewModel.addingNewEdgeDisabledProperty());
         addEdgeButton.setOnAction(e -> viewModel.addEdge());
 
         tableEdges.setItems(viewModel.getEdgeList());
         vertex1Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex1"));
         vertex2Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex2"));
         weightColumn.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
+    }
+
+    private void setErrorBorder(final TextField textField, final boolean active) {
+        textField.pseudoClassStateChanged(errorClass, active);
     }
 }
