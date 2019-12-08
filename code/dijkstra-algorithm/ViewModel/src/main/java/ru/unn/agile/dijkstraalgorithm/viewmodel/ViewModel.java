@@ -16,8 +16,8 @@ public class ViewModel {
 
     private DijkstraGraph graph;
 
-    private static final Pattern VERTEX_INPUT_AllOWED_SYMBOLES = Pattern.compile("^[a-zA-Z]+$");
-    private static final Pattern WEIGHT_INPUT_AllOWED_SYMBOLES = Pattern.compile("^[1-9][0-9]*$");
+    private static final Pattern VERTEX_INPUT_ALLOWED_SYMBOLES = Pattern.compile("^[a-zA-Z]+$");
+    private static final Pattern WEIGHT_INPUT_ALLOWED_SYMBOLES = Pattern.compile("^[1-9][0-9]*$");
     private final SimpleBooleanProperty addingNewEdgeDisabled = new SimpleBooleanProperty();
 
 
@@ -43,7 +43,9 @@ public class ViewModel {
             }
             @Override
             protected boolean computeValue() {
-                return (isVertex1InputCorrect() && isVertex2InputCorrect() && isWeightInputCorrect());
+                return (isVertex1InputCorrect()
+                        && isVertex2InputCorrect()
+                        && isWeightInputCorrect());
             }
         };
         addingNewEdgeDisabled.bind(canCalculateBoolBinding.not());
@@ -65,24 +67,26 @@ public class ViewModel {
     public boolean isVertex1InputCorrect() {
         String exprText1 = vertex1.get().trim();
         String exprText2 = vertex2.get().trim();
-        return (VERTEX_INPUT_AllOWED_SYMBOLES.matcher(exprText1).matches()) &&
-                !(exprText1.equals(exprText2));
+        return (VERTEX_INPUT_ALLOWED_SYMBOLES.matcher(exprText1).matches()
+                && !(exprText1.equals(exprText2)));
     }
 
     public boolean isVertex2InputCorrect() {
         String exprText1 = vertex1.get().trim();
         String exprText2 = vertex2.get().trim();
-        return (VERTEX_INPUT_AllOWED_SYMBOLES.matcher(exprText2).matches() &&
-                !(exprText1.equals(exprText2)));
+        return (VERTEX_INPUT_ALLOWED_SYMBOLES.matcher(exprText2).matches()
+                && !(exprText1.equals(exprText2)));
     }
 
     public boolean isWeightInputCorrect() {
         String exprText = weight.get().trim();
-        return (WEIGHT_INPUT_AllOWED_SYMBOLES.matcher(exprText).matches());
+        return (WEIGHT_INPUT_ALLOWED_SYMBOLES.matcher(exprText).matches());
     }
 
     public void createGraph() {
-        if (edgeList.size() == 0) return;
+        if (edgeList.size() == 0) {
+            return;
+        }
 
         List<DijkstraGraph.Edge> list = edgeList.stream()
                 .map(EdgeViewModel::getEdge)
@@ -100,7 +104,9 @@ public class ViewModel {
     public void calculatePath() {
         String toPath = getVertexTo();
         String fromPath = getVertexFrom();
-        if (toPath == null || fromPath == null) return;
+        if (toPath == null || fromPath == null) {
+            return;
+        }
 
         graph.calculate(fromPath);
         resultPath.setValue(graph.getPath(toPath));
@@ -126,7 +132,7 @@ public class ViewModel {
         return vertexFrom;
     }
 
-    public void setVertexFrom(String vertexFrom) {
+    public void setVertexFrom(final String vertexFrom) {
         this.vertexFrom.set(vertexFrom);
     }
 
@@ -138,7 +144,7 @@ public class ViewModel {
         return vertexTo;
     }
 
-    public void setVertexTo(String vertexTo) {
+    public void setVertexTo(final String vertexTo) {
         this.vertexTo.set(vertexTo);
     }
 
@@ -150,7 +156,7 @@ public class ViewModel {
         return resultPath;
     }
 
-    public void setResultPath(String resultPath) {
+    public void setResultPath(final String resultPath) {
         this.resultPath.set(resultPath);
     }
 

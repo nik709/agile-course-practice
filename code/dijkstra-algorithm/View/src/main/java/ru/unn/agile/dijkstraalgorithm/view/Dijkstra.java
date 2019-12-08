@@ -1,14 +1,9 @@
 package ru.unn.agile.dijkstraalgorithm.view;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.css.PseudoClass;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.TextFlow;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.EdgeViewModel;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.ViewModel;
 
@@ -40,38 +35,49 @@ public class Dijkstra {
     @FXML
     private TableColumn<EdgeViewModel, Integer> weightColumn;
 
-    @FXML Button createGraphButton;
-    @FXML Button calculatePathButton;
+    @FXML
+    private Button createGraphButton;
+    @FXML
+    private Button calculatePathButton;
 
     @FXML
     private ComboBox<String> fromComboBox;
     @FXML
     private ComboBox<String> toComboBox;
 
-    @FXML Label resultLabel;
-    @FXML TextArea resultPathTextArea;
+    @FXML
+    private Label resultLabel;
+    @FXML
+    private TextArea resultPathTextArea;
 
     @FXML
     void initialize() {
         vertex1TextField.textProperty().bindBidirectional(viewModel.vertex1Property());
         vertex1TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
-        viewModel.vertex1Property().addListener(obs -> setErrorBorder(vertex1TextField, !viewModel.isVertex1InputCorrect()));
+        viewModel.vertex1Property().addListener(obs ->
+                setErrorBorder(vertex1TextField, !viewModel.isVertex1InputCorrect()));
 
         vertex2TextField.textProperty().bindBidirectional(viewModel.vertex2Property());
         vertex2TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
-        viewModel.vertex2Property().addListener(obs -> setErrorBorder(vertex2TextField, !viewModel.isVertex2InputCorrect()));
+        viewModel.vertex2Property().addListener(obs ->
+                setErrorBorder(vertex2TextField, !viewModel.isVertex2InputCorrect()));
 
         weightTextField.textProperty().bindBidirectional(viewModel.weightProperty());
         weightTextField.tooltipProperty().setValue(new Tooltip(weightInputTooltip));
-        viewModel.weightProperty().addListener(obs -> setErrorBorder(weightTextField, !viewModel.isWeightInputCorrect()));
+        viewModel.weightProperty().addListener(obs ->
+                setErrorBorder(weightTextField, !viewModel.isWeightInputCorrect()));
 
-        addEdgeButton.disableProperty().bindBidirectional(viewModel.addingNewEdgeDisabledProperty());
+        addEdgeButton.disableProperty()
+                .bindBidirectional(viewModel.addingNewEdgeDisabledProperty());
         addEdgeButton.setOnAction(e -> viewModel.addEdge());
 
         tableEdges.setItems(viewModel.getEdgeList());
-        vertex1Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex1"));
-        vertex2Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex2"));
-        weightColumn.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
+        vertex1Column.setCellValueFactory(
+                new PropertyValueFactory<EdgeViewModel, String>("vertex1"));
+        vertex2Column.setCellValueFactory(
+                new PropertyValueFactory<EdgeViewModel, String>("vertex2"));
+        weightColumn.setCellValueFactory(
+                new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
 
         createGraphButton.setOnAction(e -> viewModel.createGraph());
         calculatePathButton.setOnAction(e -> viewModel.calculatePath());

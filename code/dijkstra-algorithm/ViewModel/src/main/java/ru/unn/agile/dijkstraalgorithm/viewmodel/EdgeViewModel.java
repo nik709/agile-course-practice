@@ -15,7 +15,7 @@ public class EdgeViewModel {
         this("", "", "");
     }
 
-    EdgeViewModel(String vertex1, String vertex2, String weight) {
+    EdgeViewModel(final String vertex1, final String vertex2, final String weight) {
         setVertex1(vertex1);
         setVertex2(vertex2);
         setWeight(weight);
@@ -31,7 +31,7 @@ public class EdgeViewModel {
         return vertex1;
     }
 
-    private void setVertex1(String vertex1) {
+    private void setVertex1(final String vertex1) {
         this.vertex1.set(vertex1);
     }
 
@@ -43,7 +43,7 @@ public class EdgeViewModel {
         return vertex2;
     }
 
-    private void setVertex2(String vertex2) {
+    private void setVertex2(final String vertex2) {
         this.vertex2.set(vertex2);
     }
 
@@ -55,7 +55,7 @@ public class EdgeViewModel {
         return weight;
     }
 
-    private void setWeight(String weight) {
+    private void setWeight(final String weight) {
         this.weight.set(Integer.parseInt(weight));
     }
 
