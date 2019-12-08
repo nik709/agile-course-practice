@@ -1,5 +1,6 @@
 package ru.unn.agile.dijkstraalgorithm.view;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,6 +36,14 @@ public class Dijkstra {
     @FXML
     private TableColumn<EdgeViewModel, Integer> weightColumn;
 
+    @FXML Button createGraphButton;
+    @FXML Button calculatePath;
+
+    @FXML
+    private ComboBox<String> fromComboBox;
+    @FXML
+    private ComboBox<String> toComboBox;
+
 
     @FXML
     void initialize() {
@@ -57,6 +66,13 @@ public class Dijkstra {
         vertex1Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex1"));
         vertex2Column.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, String>("vertex2"));
         weightColumn.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
+
+        createGraphButton.setOnAction(e -> viewModel.createGraph());
+
+        fromComboBox.itemsProperty().bind(viewModel.getVertexListProperty());
+        toComboBox.itemsProperty().bind(viewModel.getVertexListProperty());
+//        fromComboBox.setItems(viewModel.getVertexList());
+//        toComboBox.setItems(viewModel.getVertexList());
     }
 
     private void setErrorBorder(final TextField textField, final boolean active) {

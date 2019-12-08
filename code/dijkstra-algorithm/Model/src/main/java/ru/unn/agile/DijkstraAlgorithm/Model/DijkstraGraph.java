@@ -16,10 +16,18 @@ public class DijkstraGraph {
         private final String v1, v2;
         private final int dist;
 
-        Edge(final String v1, final String v2, final int dist) {
+        public Edge(final String v1, final String v2, final int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
+        }
+
+        public String getV1() {
+            return v1;
+        }
+
+        public String getV2() {
+            return v2;
         }
     }
 
@@ -60,7 +68,7 @@ public class DijkstraGraph {
     /**
      * Builds a graph from a set of edges
      */
-    DijkstraGraph(final List<Edge> edges) {
+    public DijkstraGraph(final List<Edge> edges) {
         validateEdges(edges);
 
         graph = new HashMap<>(edges.size());
