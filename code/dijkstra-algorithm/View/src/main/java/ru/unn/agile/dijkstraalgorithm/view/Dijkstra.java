@@ -1,10 +1,14 @@
 package ru.unn.agile.dijkstraalgorithm.view;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.css.PseudoClass;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.TextFlow;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.EdgeViewModel;
 import ru.unn.agile.dijkstraalgorithm.viewmodel.ViewModel;
 
@@ -37,13 +41,15 @@ public class Dijkstra {
     private TableColumn<EdgeViewModel, Integer> weightColumn;
 
     @FXML Button createGraphButton;
-    @FXML Button calculatePath;
+    @FXML Button calculatePathButton;
 
     @FXML
     private ComboBox<String> fromComboBox;
     @FXML
     private ComboBox<String> toComboBox;
 
+    @FXML Label resultLabel;
+    @FXML TextArea resultPathTextArea;
 
     @FXML
     void initialize() {
@@ -68,11 +74,16 @@ public class Dijkstra {
         weightColumn.setCellValueFactory(new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
 
         createGraphButton.setOnAction(e -> viewModel.createGraph());
+        calculatePathButton.setOnAction(e -> viewModel.calculatePath());
 
-        fromComboBox.itemsProperty().bind(viewModel.getVertexListProperty());
-        toComboBox.itemsProperty().bind(viewModel.getVertexListProperty());
-//        fromComboBox.setItems(viewModel.getVertexList());
-//        toComboBox.setItems(viewModel.getVertexList());
+        fromComboBox.setItems(viewModel.getVertexList());
+        fromComboBox.valueProperty().bindBidirectional(viewModel.vertexFromProperty());
+
+        toComboBox.setItems(viewModel.getVertexList());
+        toComboBox.valueProperty().bindBidirectional(viewModel.vertexToProperty());
+
+//        resultLabel.textProperty().bindBidirectional(viewModel.resultPathProperty());
+        resultPathTextArea.textProperty().bindBidirectional(viewModel.resultPathProperty());
     }
 
     private void setErrorBorder(final TextField textField, final boolean active) {

@@ -1,10 +1,6 @@
 package ru.unn.agile.dijkstraalgorithm.model;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class DijkstraGraph {
 
@@ -170,5 +166,9 @@ public class DijkstraGraph {
      */
     public int getVertexNumber() {
         return graph.size();
+    }
+
+    public List<String> getVertexList() {
+        return new ArrayList<>(graph.keySet());
     }
 }

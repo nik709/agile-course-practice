@@ -1,13 +1,14 @@
 package ru.unn.agile.dijkstraalgorithm.viewmodel;
 
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ru.unn.agile.dijkstraalgorithm.model.DijkstraGraph;
 
-import java.util.*;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -24,10 +25,13 @@ public class ViewModel {
     private final StringProperty vertex2 = new SimpleStringProperty();
     private final StringProperty weight = new SimpleStringProperty();
 
-    private final ObservableList<EdgeViewModel> edgeList = FXCollections.observableArrayList();
+    private StringProperty vertexFrom = new SimpleStringProperty();
+    private StringProperty vertexTo = new SimpleStringProperty();
+    private StringProperty resultPath = new SimpleStringProperty();
 
+
+    private final ObservableList<EdgeViewModel> edgeList = FXCollections.observableArrayList();
     private final ObservableList<String> vertexList = FXCollections.observableArrayList();
-    private ListProperty<String> vertexListProperty = new SimpleListProperty<>(vertexList);
 
 
     public ViewModel() {
@@ -78,49 +82,28 @@ public class ViewModel {
     }
 
     public void createGraph() {
-        Set<String> vertexSet = new HashSet<>();
+        if (edgeList.size() == 0) return;
 
         List<DijkstraGraph.Edge> list = edgeList.stream()
                 .map(EdgeViewModel::getEdge)
                 .collect(Collectors.toList());
 
-//        List<String> vertex1List = list.stream()
-//                .map(DijkstraGraph.Edge::getV1)
-//                .collect(Collectors.toList());
-//
-//        List<String> vertex2List = list.stream()
-//                .map(DijkstraGraph.Edge::getV2)
-//                .collect(Collectors.toList());
-
-        List<String> vertex1List = edgeList.stream()
-                .map(EdgeViewModel::vertex1Property)
-                .map(v -> v.toString())
-                .collect(Collectors.toList());
-
-        List<String> vertex2List = list.stream()
-                .map(DijkstraGraph.Edge::getV2)
-                .collect(Collectors.toList());
-
-        for (String x:vertex1List) {
-            System.out.println(x.toString());
-        }
-
-        for (String x:vertex2List) {
-            System.out.println(x);
-        }
-
         graph = new DijkstraGraph(list);
+        updateVertexList();
+    }
 
-        vertexSet.addAll(vertex1List);
-        vertexSet.addAll(vertex2List);
-
-        for (String x:vertexSet) {
-            System.out.println(x);
-        }
-
+    private void updateVertexList() {
         vertexList.clear();
-        vertexList.addAll(vertexSet);
-        vertexList.addAll("a", "A", "c");
+        vertexList.addAll(graph.getVertexList());
+    }
+
+    public void calculatePath() {
+        String toPath = getVertexTo();
+        String fromPath = getVertexFrom();
+        if (toPath == null || fromPath == null) return;
+
+        graph.calculate(fromPath);
+        resultPath.setValue(graph.getPath(toPath));
     }
 
     public StringProperty vertex1Property() {
@@ -135,6 +118,42 @@ public class ViewModel {
         return weight;
     }
 
+    private String getVertexFrom() {
+        return vertexFrom.get();
+    }
+
+    public StringProperty vertexFromProperty() {
+        return vertexFrom;
+    }
+
+    public void setVertexFrom(String vertexFrom) {
+        this.vertexFrom.set(vertexFrom);
+    }
+
+    private String getVertexTo() {
+        return vertexTo.get();
+    }
+
+    public StringProperty vertexToProperty() {
+        return vertexTo;
+    }
+
+    public void setVertexTo(String vertexTo) {
+        this.vertexTo.set(vertexTo);
+    }
+
+    public String getResultPath() {
+        return resultPath.get();
+    }
+
+    public StringProperty resultPathProperty() {
+        return resultPath;
+    }
+
+    public void setResultPath(String resultPath) {
+        this.resultPath.set(resultPath);
+    }
+
     public SimpleBooleanProperty addingNewEdgeDisabledProperty() {
         return addingNewEdgeDisabled;
     }
@@ -143,8 +162,7 @@ public class ViewModel {
         return edgeList;
     }
 
-    public ListProperty<String> getVertexListProperty() {
-        return vertexListProperty;
+    public ObservableList<String> getVertexList() {
+        return vertexList;
     }
-
 }

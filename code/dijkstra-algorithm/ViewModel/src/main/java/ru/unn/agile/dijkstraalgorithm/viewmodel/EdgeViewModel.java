@@ -20,7 +20,11 @@ public class EdgeViewModel {
         setVertex2(vertex2);
         setWeight(weight);
 
-        edge = new DijkstraGraph.Edge(this.vertex1.toString(), this.vertex2.toString(), Integer.parseInt(weight));
+        edge = new DijkstraGraph.Edge(getVertex1(), getVertex2(), getWeight());
+    }
+
+    private String getVertex1() {
+        return vertex1.get();
     }
 
     public SimpleStringProperty vertex1Property() {
@@ -31,12 +35,20 @@ public class EdgeViewModel {
         this.vertex1.set(vertex1);
     }
 
+    private String getVertex2() {
+        return vertex2.get();
+    }
+
     public SimpleStringProperty vertex2Property() {
         return vertex2;
     }
 
     private void setVertex2(String vertex2) {
         this.vertex2.set(vertex2);
+    }
+
+    private int getWeight() {
+        return weight.get();
     }
 
     public SimpleIntegerProperty weightProperty() {
