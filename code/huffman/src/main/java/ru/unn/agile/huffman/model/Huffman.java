@@ -84,19 +84,19 @@ public class Huffman {
             return false;
         }
         Huffman huffmanCode = (Huffman) object;
-        return this.decodedString.equals(huffmanCode.getDecodedString());
+        return Huffman.decodedString.equals(huffmanCode.getDecodedString());
     }
 
     public static String getEncodedString() {
-        return this.encodedString;
+        return Huffman.encodedString;
     }
 
     public static String getDecodedString() {
-        return this.decodedString;
+        return Huffman.decodedString;
     }
 
     @Override
     public String toString() {
-        return this.encodedString + " -> " + this.decodedString;
+        return Huffman.encodedString + " -> " + Huffman.decodedString;
     }
 }
