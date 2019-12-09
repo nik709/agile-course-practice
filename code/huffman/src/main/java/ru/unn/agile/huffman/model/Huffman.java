@@ -15,7 +15,7 @@ public class Huffman {
     public static final String CODE_0 = "0";
     public static final String CODE_1 = "1";
 
-    private Map<Character, Node> buildAlphabet() {
+    private static Map<Character, Node> buildAlphabet() {
         Map<Character, Integer> numberOfAppearances = new HashMap<>();
         Map<Character, Node> alphabet = new HashMap<>();
 
@@ -68,12 +68,12 @@ public class Huffman {
     }
 
     @Override
-    public int hashCode() {
+    public static int hashCode() {
         return Objects.hashCode(encodedString);
     }
 
     @Override
-    public boolean equals(final Object object) {
+    public static boolean equals(final Object object) {
         if (object == null) {
             return false;
         }
@@ -87,16 +87,16 @@ public class Huffman {
         return this.decodedString.equals(huffmanCode.getDecodedString());
     }
 
-    public String getEncodedString() {
+    public static String getEncodedString() {
         return this.encodedString;
     }
 
-    public String getDecodedString() {
+    public static String getDecodedString() {
         return this.decodedString;
     }
 
     @Override
-    public String toString() {
+    public static String toString() {
         return this.encodedString + " -> " + this.decodedString;
     }
 }
