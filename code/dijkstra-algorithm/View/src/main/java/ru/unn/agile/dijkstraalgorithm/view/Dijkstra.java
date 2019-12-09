@@ -1,5 +1,6 @@
 package ru.unn.agile.dijkstraalgorithm.view;
 
+import javafx.beans.property.Property;
 import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -44,52 +45,79 @@ public class Dijkstra {
     private ComboBox<String> fromComboBox;
     @FXML
     private ComboBox<String> toComboBox;
-
-    @FXML
-    private Label resultLabel;
     @FXML
     private TextArea resultPathTextArea;
 
     @FXML
     void initialize() {
-        vertex1TextField.textProperty().bindBidirectional(viewModel.vertex1Property());
-        vertex1TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
+        initAddEdgeForm();
+        initTableView();
+        initControlPanel();
+    }
+
+    private void initAddEdgeForm() {
+        initTextField(vertex1TextField, vertexInputTooltip, viewModel.vertex1Property());
+        initTextField(vertex2TextField, vertexInputTooltip, viewModel.vertex2Property());
+        initTextField(weightTextField, weightInputTooltip, viewModel.weightProperty());
+
         viewModel.vertex1Property().addListener(obs ->
                 setErrorBorder(vertex1TextField, !viewModel.isVertex1InputCorrect()));
-
-        vertex2TextField.textProperty().bindBidirectional(viewModel.vertex2Property());
-        vertex2TextField.tooltipProperty().setValue(new Tooltip(vertexInputTooltip));
         viewModel.vertex2Property().addListener(obs ->
                 setErrorBorder(vertex2TextField, !viewModel.isVertex2InputCorrect()));
-
-        weightTextField.textProperty().bindBidirectional(viewModel.weightProperty());
-        weightTextField.tooltipProperty().setValue(new Tooltip(weightInputTooltip));
         viewModel.weightProperty().addListener(obs ->
                 setErrorBorder(weightTextField, !viewModel.isWeightInputCorrect()));
 
         addEdgeButton.disableProperty()
                 .bindBidirectional(viewModel.addingNewEdgeDisabledProperty());
         addEdgeButton.setOnAction(e -> viewModel.addEdge());
+    }
 
+    private void initTableView() {
         tableEdges.setItems(viewModel.getEdgeList());
+
         vertex1Column.setCellValueFactory(
                 new PropertyValueFactory<EdgeViewModel, String>("vertex1"));
         vertex2Column.setCellValueFactory(
                 new PropertyValueFactory<EdgeViewModel, String>("vertex2"));
         weightColumn.setCellValueFactory(
                 new PropertyValueFactory<EdgeViewModel, Integer>("weight"));
+    }
 
+    private void initControlPanel() {
         createGraphButton.setOnAction(e -> viewModel.createGraph());
         calculatePathButton.setOnAction(e -> viewModel.calculatePath());
 
         fromComboBox.setItems(viewModel.getVertexList());
-        fromComboBox.valueProperty().bindBidirectional(viewModel.vertexFromProperty());
-
         toComboBox.setItems(viewModel.getVertexList());
+
+        fromComboBox.valueProperty().bindBidirectional(viewModel.vertexFromProperty());
         toComboBox.valueProperty().bindBidirectional(viewModel.vertexToProperty());
 
-//        resultLabel.textProperty().bindBidirectional(viewModel.resultPathProperty());
         resultPathTextArea.textProperty().bindBidirectional(viewModel.resultPathProperty());
+    }
+
+    private  void initTextField(final TextField textField,
+                                final String tooltip,
+                                final Property<String> property) {
+        bindTextFieldProperty(textField, property);
+        setTextFieldTooltip(textField, tooltip);
+        addListenerForRemovingSpaces(textField);
+    }
+
+    private void setTextFieldTooltip(final TextField textField, final String tooltip) {
+        textField.tooltipProperty().setValue(new Tooltip(tooltip));
+    }
+
+    private void bindTextFieldProperty(final TextField textField,
+                                       final Property<String> property) {
+        textField.textProperty().bindBidirectional(property);
+    }
+
+    private void addListenerForRemovingSpaces(final TextField textField) {
+        textField.textProperty().addListener(
+                (observable, oldValue, newValue) ->
+                        textField.setText(newValue.replaceAll("\\s+", ""))
+        );
     }
 
     private void setErrorBorder(final TextField textField, final boolean active) {

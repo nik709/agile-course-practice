@@ -16,8 +16,8 @@ public class ViewModel {
 
     private DijkstraGraph graph;
 
-    private static final Pattern VERTEX_INPUT_ALLOWED_SYMBOLES = Pattern.compile("^[a-zA-Z]+$");
-    private static final Pattern WEIGHT_INPUT_ALLOWED_SYMBOLES = Pattern.compile("^[1-9][0-9]*$");
+    private static final Pattern VERTEX_INPUT_ALLOWED_SYMBOLS = Pattern.compile("^[a-zA-Z]+$");
+    private static final Pattern WEIGHT_INPUT_ALLOWED_SYMBOLS = Pattern.compile("^[1-9][0-9]*$");
     private final SimpleBooleanProperty addingNewEdgeDisabled = new SimpleBooleanProperty();
 
 
@@ -65,26 +65,26 @@ public class ViewModel {
     }
 
     public boolean isVertex1InputCorrect() {
-        String exprText1 = vertex1.get().trim();
-        String exprText2 = vertex2.get().trim();
-        return (VERTEX_INPUT_ALLOWED_SYMBOLES.matcher(exprText1).matches()
+        String exprText1 = vertex1.get();
+        String exprText2 = vertex2.get();
+        return (VERTEX_INPUT_ALLOWED_SYMBOLS.matcher(exprText1).matches()
                 && !(exprText1.equals(exprText2)));
     }
 
     public boolean isVertex2InputCorrect() {
-        String exprText1 = vertex1.get().trim();
-        String exprText2 = vertex2.get().trim();
-        return (VERTEX_INPUT_ALLOWED_SYMBOLES.matcher(exprText2).matches()
+        String exprText1 = vertex1.get();
+        String exprText2 = vertex2.get();
+        return (VERTEX_INPUT_ALLOWED_SYMBOLS.matcher(exprText2).matches()
                 && !(exprText1.equals(exprText2)));
     }
 
     public boolean isWeightInputCorrect() {
-        String exprText = weight.get().trim();
-        return (WEIGHT_INPUT_ALLOWED_SYMBOLES.matcher(exprText).matches());
+        String exprText = weight.get();
+        return (WEIGHT_INPUT_ALLOWED_SYMBOLS.matcher(exprText).matches());
     }
 
     public void createGraph() {
-        if (edgeList.size() == 0) {
+        if (edgeList.isEmpty()) {
             return;
         }
 
