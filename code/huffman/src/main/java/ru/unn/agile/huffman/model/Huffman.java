@@ -35,8 +35,7 @@ public class Huffman {
         return alphabet;
     }
 
-    public static void encodString(final String str)
-    {
+    public static void encodString(final String str){
         decodedString = str;
         if ("".equals(decodedString)) {
             encodedString = "";
