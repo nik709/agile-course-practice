@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 import ru.unn.agile.huffman.model.node.*;
 
 public class Huffman {
-    private String encodedString;
-    private String decodedString;
+    private static String encodedString;
+    private static String decodedString;
 
     public static final String CODE_0 = "0";
     public static final String CODE_1 = "1";
@@ -68,12 +68,12 @@ public class Huffman {
     }
 
     @Override
-    public static int hashCode() {
+    public int hashCode() {
         return Objects.hashCode(encodedString);
     }
 
     @Override
-    public static boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (object == null) {
             return false;
         }
@@ -96,7 +96,7 @@ public class Huffman {
     }
 
     @Override
-    public static String toString() {
+    public String toString() {
         return this.encodedString + " -> " + this.decodedString;
     }
 }
