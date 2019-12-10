@@ -155,4 +155,10 @@ public class DijkstraGraphTest {
         assertEquals(CAN_NOT_REACH_D_VERTEX, pathFromAtoD);
     }
 
+    @Test
+    public void canGetVertexList() {
+        DijkstraGraph g = new DijkstraGraph(EDGES_1);
+
+        assertEquals(5, g.getVertexList().size());
+    }
 }

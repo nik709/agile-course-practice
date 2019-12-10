@@ -11,10 +11,6 @@ public class EdgeViewModel {
 
     private final DijkstraGraph.Edge edge;
 
-    public EdgeViewModel() {
-        this("", "", "");
-    }
-
     EdgeViewModel(final String vertex1, final String vertex2, final String weight) {
         setVertex1(vertex1);
         setVertex2(vertex2);

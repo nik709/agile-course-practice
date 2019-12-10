@@ -132,9 +132,6 @@ public class ViewModel {
         return vertexFrom;
     }
 
-    public void setVertexFrom(final String vertexFrom) {
-        this.vertexFrom.set(vertexFrom);
-    }
 
     private String getVertexTo() {
         return vertexTo.get();
@@ -144,20 +141,8 @@ public class ViewModel {
         return vertexTo;
     }
 
-    public void setVertexTo(final String vertexTo) {
-        this.vertexTo.set(vertexTo);
-    }
-
-    public String getResultPath() {
-        return resultPath.get();
-    }
-
     public StringProperty resultPathProperty() {
         return resultPath;
-    }
-
-    public void setResultPath(final String resultPath) {
-        this.resultPath.set(resultPath);
     }
 
     public SimpleBooleanProperty addingNewEdgeDisabledProperty() {
