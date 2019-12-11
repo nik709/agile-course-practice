@@ -55,7 +55,7 @@ public class EdgeViewModel {
         this.weight.set(Integer.parseInt(weight));
     }
 
-    DijkstraGraph.Edge getEdge() {
+    public DijkstraGraph.Edge getEdge() {
         return edge;
     }
 }
