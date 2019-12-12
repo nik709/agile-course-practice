@@ -1,5 +1,7 @@
 package ru.unn.agile.polygon.model;
 
+import static java.lang.Math.abs;
+
 public class Polygon {
     private static final int MINIMAL_NUMBER_OF_VERTICES = 3;
     private final Point[] vertices;
@@ -74,6 +76,6 @@ public class Polygon {
     }
 
     public double getArea() {
-        return this.area;
+        return abs(this.area);
     }
 }

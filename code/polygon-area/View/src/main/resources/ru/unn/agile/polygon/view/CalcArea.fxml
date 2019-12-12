@@ -26,7 +26,7 @@
                         <VBox>
                             <children>
                                 <Label prefHeight="17.0" prefWidth="82.0" text="Insert X" />
-                                <TextField fx:id="XTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                                <TextField fx:id="xTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
                                     <VBox.margin>
                                         <Insets top="5.0" />
                                     </VBox.margin>
@@ -39,7 +39,7 @@
                         <VBox layoutX="10.0" layoutY="10.0">
                             <children>
                                 <Label text="Insert Y" />
-                                <TextField fx:id="YTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                                <TextField fx:id="yTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
                                     <VBox.margin>
                                         <Insets top="5.0" />
                                     </VBox.margin>
@@ -58,8 +58,8 @@
                 </HBox>
                 <TableView fx:id="tablePoints" prefHeight="204.0" prefWidth="283.0">
                     <columns>
-                        <TableColumn fx:id="XColumn" maxWidth="148.0" minWidth="50.0" prefWidth="140.0" text="X" />
-                        <TableColumn fx:id="YColumn" maxWidth="159.0" minWidth="75.0" prefWidth="119.0" text="Y" />
+                        <TableColumn fx:id="xColumn" maxWidth="148.0" minWidth="50.0" prefWidth="140.0" text="X" />
+                        <TableColumn fx:id="yColumn" maxWidth="159.0" minWidth="75.0" prefWidth="119.0" text="Y" />
                     </columns>
                     <VBox.margin>
                         <Insets top="10.0" />
@@ -67,7 +67,7 @@
                 </TableView>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="274.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Get Area" textAlignment="CENTER" />
+                  <Button fx:id="calcAreaButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Get Area" textAlignment="CENTER" />
                </children>
             </HBox>
             <HBox prefHeight="23.0" prefWidth="283.0">
@@ -77,7 +77,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextArea prefHeight="4.0" prefWidth="211.0" />
+                  <TextArea fx:id="resultTextArea" prefHeight="4.0" prefWidth="211.0" />
                </children></HBox>
             </children>
             <padding>

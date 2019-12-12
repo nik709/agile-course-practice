@@ -2,18 +2,17 @@ package ru.unn.agile.polygon.viewmodel;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ru.unn.agile.polygon.model.Polygon;
 import ru.unn.agile.polygon.model.Point;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ViewModel {
+    private Polygon polygon;
 
     private static final Pattern COORDINATE_INPUT_ALLOWED_SYMBOLS = Pattern.compile("^[-+]?[0-9]+\\.?[0-9]*$");
     private final SimpleBooleanProperty addingNewPointDisabled = new SimpleBooleanProperty();
@@ -55,12 +54,33 @@ public class ViewModel {
         clearFormInput();
     }
 
+    public void calcArea () {
+        if (pointList.isEmpty()) {
+            return;
+        }
+
+        List<Point> list = pointList.stream()
+                .collect(Collectors.toList());
+        Point[] pointArray = new Point[list.size()];
+        list.toArray(pointArray);
+
+        try {
+            polygon = new Polygon(pointArray);
+            result.setValue(Double.toString(polygon.getArea()));
+        } catch (IllegalArgumentException e) {
+            result.setValue(e.getMessage());
+        }
+    }
+
     private void clearFormInput() {
         xCoordinate.set("");
         yCoordinate.set("");
     }
 
     private final double parseCoordinate (final StringProperty coordinate) {
+        if (!isCoordinatesInputCorrect()) {
+            throw new IllegalArgumentException("Can't parse invalid input");
+        }
         return Double.parseDouble(coordinate.get());
     }
 
@@ -79,5 +99,12 @@ public class ViewModel {
     }
     public final String getResult() {
         return result.get();
+    }
+
+    public BooleanProperty addingNewPointDisabledProperty() {
+        return addingNewPointDisabled;
+    }
+    public final boolean isAddingNewPointDisabled() {
+        return addingNewPointDisabled.get();
     }
 }
