@@ -131,9 +131,13 @@ project(":code/dijkstra-algorithm").name = "dijkstra-algorithm-Model"
 include "code/priority-queue"
 project(":code/priority-queue").name = "priority-queue"
 // Тамилина Дарья
-// Тягунов Владимир
-include "code/polygon-area"
-project(":code/polygon-area").name = "polygon-area-Model"
+// polygon-area
+include "code/polygon-area/Model"
+project(":code/polygon-area/Model").name = "polygon-area-Model"
+include "code/polygon-area/View"
+project(":code/polygon-area/View").name = "polygon-area-View"
+include "code/polygon-area/ViewModel"
+project(":code/polygon-area/ViewModel").name = "polygon-area-ViewModel"
 // Федорова Дарья
 // Федотов Андрей
 include "code/datastructure-set"
