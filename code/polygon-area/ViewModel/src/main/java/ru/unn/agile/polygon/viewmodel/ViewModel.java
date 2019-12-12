@@ -8,7 +8,6 @@ import ru.unn.agile.polygon.model.Polygon;
 import ru.unn.agile.polygon.model.Point;
 
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class ViewModel {
     private Polygon polygon;
