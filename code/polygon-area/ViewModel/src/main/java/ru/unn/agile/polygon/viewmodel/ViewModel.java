@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import ru.unn.agile.polygon.model.Polygon;
 import ru.unn.agile.polygon.model.Point;
 
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -60,7 +59,7 @@ public class ViewModel {
             return;
         }
 
-	Point[] pointArray = (Point[]) pointList.stream()
+        Point[] pointArray = (Point[]) pointList.stream()
                                    .collect(Collectors.toList())
                                    .toArray();
 
