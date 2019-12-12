@@ -42,6 +42,12 @@ public class ViewModelTests {
     }
 
     @Test
+    public void cantCalcAreaWhenPointListIsEmpty() {
+        viewModel.calcArea();
+        assertEquals(null, viewModel.getResult());
+    }
+
+    @Test
     public void canCalcAreaOfThreePointPolygon() {
         setInputData("1", "0");
         viewModel.addPoint();

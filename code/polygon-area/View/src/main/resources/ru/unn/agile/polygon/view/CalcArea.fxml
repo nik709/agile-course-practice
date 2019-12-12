@@ -26,7 +26,7 @@
                         <VBox>
                             <children>
                                 <Label prefHeight="17.0" prefWidth="82.0" text="Insert X" />
-                                <TextField fx:id="xTextField" maxWidth="75.0" minWidth="75.0" prefWidth="75.0">
+                                <TextField maxWidth="75.0" minWidth="75.0" prefWidth="75.0" fx:id="xTextField">
                                     <VBox.margin>
                                         <Insets top="5.0" />
                                     </VBox.margin>
@@ -58,8 +58,8 @@
                 </HBox>
                 <TableView fx:id="tablePoints" prefHeight="204.0" prefWidth="283.0">
                     <columns>
-                        <TableColumn fx:id="xColumn" maxWidth="148.0" minWidth="50.0" prefWidth="140.0" text="X" />
-                        <TableColumn fx:id="yColumn" maxWidth="159.0" minWidth="75.0" prefWidth="119.0" text="Y" />
+                        <TableColumn maxWidth="148.0" minWidth="50.0" prefWidth="140.0" sortable="false" text="X" fx:id="xColumn" />
+                        <TableColumn fx:id="yColumn" maxWidth="159.0" minWidth="75.0" prefWidth="119.0" sortable="false" text="Y" />
                     </columns>
                     <VBox.margin>
                         <Insets top="10.0" />
@@ -77,7 +77,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="resultTextArea" prefHeight="4.0" prefWidth="211.0" />
+                  <TextArea fx:id="resultTextArea" editable="false" prefHeight="4.0" prefWidth="211.0" wrapText="true" />
                </children></HBox>
             </children>
             <padding>
