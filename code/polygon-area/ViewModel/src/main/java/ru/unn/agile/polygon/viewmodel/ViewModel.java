@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public class ViewModel {
     private Polygon polygon;
 
-    private static final Pattern COORDINATE_INPUT_ALLOWED_SYMBOLS = Pattern.compile("^[-+]?[0-9]+\\.?[0-9]*$");
+    private static final Pattern COORDINATE_INPUT_ALLOWED_SYMBOLS =
+            Pattern.compile("^[-+]?[0-9]+\\.?[0-9]*$");
     private final SimpleBooleanProperty addingNewPointDisabled = new SimpleBooleanProperty();
 
     private final StringProperty xCoordinate = new SimpleStringProperty();
@@ -54,7 +55,7 @@ public class ViewModel {
         clearFormInput();
     }
 
-    public void calcArea () {
+    public void calcArea() {
         if (pointList.isEmpty()) {
             return;
         }
@@ -77,7 +78,7 @@ public class ViewModel {
         yCoordinate.set("");
     }
 
-    private final double parseCoordinate (final StringProperty coordinate) {
+    private double parseCoordinate(final StringProperty coordinate) {
         if (!isCoordinatesInputCorrect()) {
             throw new IllegalArgumentException("Can't parse invalid input");
         }
