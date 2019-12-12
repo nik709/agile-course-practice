@@ -60,10 +60,9 @@ public class ViewModel {
             return;
         }
 
-        List<Point> list = pointList.stream()
-                .collect(Collectors.toList());
-        Point[] pointArray = new Point[list.size()];
-        list.toArray(pointArray);
+	Point[] pointArray = (Point[]) pointList.stream()
+                                   .collect(Collectors.toList())
+                                   .toArray();
 
         try {
             polygon = new Polygon(pointArray);
