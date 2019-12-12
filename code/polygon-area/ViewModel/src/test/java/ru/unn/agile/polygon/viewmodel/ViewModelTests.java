@@ -22,7 +22,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void isAddingValidInput () {
+    public void isAddingValidInput() {
         setInputData("-261.55", "2.645");
         viewModel.addPoint();
         assertEquals(new Point(-261.55, 2.645).getX(), viewModel.getPointList().get(0).getX(), eps);
@@ -30,19 +30,19 @@ public class ViewModelTests {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void isNotAddedInvalidInput () {
+    public void isNotAddedInvalidInput() {
         setInputData("-26vrt1.55", "2..645");
         viewModel.addPoint();
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void isNotAddedEmptyInput () {
+    public void isNotAddedEmptyInput() {
         setInputData("", "");
         viewModel.addPoint();
     }
 
     @Test
-    public void canCalcAreaOfThreePointPolygon () {
+    public void canCalcAreaOfThreePointPolygon() {
         setInputData("1", "0");
         viewModel.addPoint();
         setInputData("0", "0");
@@ -107,7 +107,7 @@ public class ViewModelTests {
         assertEquals("Sides of polygon must not intersect", viewModel.getResult());
     }
 
-    private void setInputData(String x, String y) {
+    private void setInputData(final String x, final String y) {
         viewModel.xProperty().set(x);
         viewModel.yProperty().set(y);
     }
