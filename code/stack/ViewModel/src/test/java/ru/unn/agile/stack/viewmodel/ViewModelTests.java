@@ -11,12 +11,31 @@ public class ViewModelTests {
 
     @Before
     public void setUp() {
-        viewModel = new ViewModel();
+        viewModel = new ViewModel(new FakeLogger());
     }
 
     @After
     public void tearDown() {
         viewModel = null;
+    }
+
+    @Test
+    public void canCreateViewModelWithoutLogger() {
+        ViewModel newViewModel = new ViewModel();
+
+        assertNotNull(newViewModel);
+    }
+
+    @Test
+    public void canCreateViewModelWithNotNullLogger() {
+        ViewModel newViewModel = new ViewModel(new FakeLogger());
+
+        assertNotNull(newViewModel);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canNotCreateViewModelWithNullLogger() {
+        ViewModel newViewModel = new ViewModel(null);
     }
 
     @Test

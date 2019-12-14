@@ -13,7 +13,22 @@ public class ViewModel {
     private final StringProperty status = new SimpleStringProperty();
     private final BooleanProperty popButtonState = new SimpleBooleanProperty();
 
+    private ILogger logger;
+
     public ViewModel() {
+        init();
+    }
+
+    public ViewModel(final ILogger logger) {
+        if (logger == null) {
+            throw new IllegalArgumentException("Logger parameter can't be null");
+        }
+        this.logger = logger;
+
+        init();
+    }
+
+    private void init() {
         stackDouble = new Stack<Double>();
         isStackEmptyInfo.set(Status.STACK_IS_EMPTY.toString());
         stackSize.set("0");
