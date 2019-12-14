@@ -27,7 +27,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canCreateViewModelWithNotNullLogger() {
+    public void canCreateViewModelWithNotEmptyLogger() {
         ViewModel newViewModel = new ViewModel(new FakeLogger());
 
         assertNotNull(newViewModel);
@@ -36,6 +36,42 @@ public class ViewModelTests {
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateViewModelWithNullLogger() {
         ViewModel newViewModel = new ViewModel(null);
+    }
+
+    @Test
+    public void canSetDefaultLogValue() {
+        assertEquals(0, viewModel.getLogList().size());
+    }
+
+    @Test
+    public void logIsCorrectWhenPushElement() {
+        String expectedLogMessage = "Push element 1.0 into stack";
+        viewModel.setPushElement("1.0");
+
+        viewModel.pushNewElement();
+
+        assertEquals(expectedLogMessage, viewModel.getLogList().get(0));
+    }
+
+    @Test
+    public void logIsCorrectWhenPopElement() {
+        String expectedLogMessage = "Pop element 2.0 from stack";
+        viewModel.setPushElement("2.0");
+        viewModel.pushNewElement();
+
+        viewModel.popElement();
+
+        assertEquals(expectedLogMessage, viewModel.getLogList().get(1));
+    }
+
+    @Test
+    public void logIsCorrectWhenPushNonValidElement() {
+        String logMessage = "Pushing element ! has invalid format";
+        viewModel.setPushElement("!");
+
+        viewModel.pushNewElement();
+
+        assertEquals(logMessage, viewModel.getLogList().get(0));
     }
 
     @Test

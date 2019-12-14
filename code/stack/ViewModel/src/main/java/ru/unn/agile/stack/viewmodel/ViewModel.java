@@ -3,6 +3,8 @@ package ru.unn.agile.stack.viewmodel;
 import ru.unn.agile.stack.model.Stack;
 import javafx.beans.property.*;
 
+import java.util.List;
+
 public class ViewModel {
     private Stack<Double> stackDouble;
     private final StringProperty isStackEmptyInfo = new SimpleStringProperty();
@@ -37,6 +39,10 @@ public class ViewModel {
         pushElement.set("");
         status.set(Status.WAITING.toString());
         popButtonState.set(false);
+    }
+
+    public List<String> getLogList() {
+        return logger.getLog();
     }
 
     public String getIsStackEmptyInfo() {
@@ -115,17 +121,19 @@ public class ViewModel {
     }
 
     public void pushNewElement() {
+        String pushElement = getPushElement();
         try {
-            String pushElement = getPushElement();
             if (pushElement.isEmpty()) {
                 status.set(Status.WAITING.toString());
             } else {
                 stackDouble.push(Double.parseDouble(pushElement));
                 status.set(Status.READY.toString());
                 changeStackProperties();
+                logger.log("Push element " + pushElement + " into stack");
             }
         } catch (NumberFormatException e) {
             status.set(Status.BAD_FORMAT.toString());
+            logger.log("Pushing element " + pushElement + " has invalid format");
         }
     }
 
@@ -135,6 +143,7 @@ public class ViewModel {
         if (!stackDouble.isEmpty()) {
             popElement.set(Double.toString(stackDouble.pop()));
             changeStackProperties();
+            logger.log("Pop element " + getPopElement() + " from stack");
         }
     }
 }
