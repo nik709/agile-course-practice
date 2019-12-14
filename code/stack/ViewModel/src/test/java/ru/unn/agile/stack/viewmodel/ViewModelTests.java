@@ -123,6 +123,16 @@ public class ViewModelTests {
     }
 
     @Test
+    public void canSetDefaultTextLog() {
+        assertEquals("", viewModel.getTextLog());
+    }
+
+    @Test
+    public void correctDefaultTextLog() {
+        assertEquals("", viewModel.textLogProperty().get());
+    }
+
+    @Test
     public void canPushNewElement() {
         viewModel.setPushElement("5");
         viewModel.pushNewElement();
@@ -326,5 +336,16 @@ public class ViewModelTests {
         assertEquals(notNoneTopElement, viewModel.getTopElement());
         assertEquals(notNonePopElement, viewModel.getPopElement());
         assertEquals(notNullPushElement, viewModel.getPushElement());
+    }
+
+    @Test
+    public void logIsCorrectWhenPushingEmptyElement() {
+        String textLog = "Pushing element is empty";
+        viewModel.setPushElement("");
+
+        viewModel.pushNewElement();
+
+        String logMessage = viewModel.getLogList().get(0);
+        assertTrue(logMessage.matches("(.*)" + textLog + "(.*)"));
     }
 }
