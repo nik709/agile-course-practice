@@ -3,7 +3,7 @@ package ru.unn.agile.stack.viewmodel;
 import java.util.List;
 
 public interface ILogger {
-    void log(String s);
+    void log(String message);
 
     List<String> getLog();
 }
