@@ -9,6 +9,10 @@ import static org.junit.Assert.*;
 public class ViewModelTests {
     private ViewModel viewModel;
 
+    public void setViewModel(final ViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
     @Before
     public void setUp() {
         viewModel = new ViewModel(new FakeLogger());
@@ -45,33 +49,36 @@ public class ViewModelTests {
 
     @Test
     public void logIsCorrectWhenPushElement() {
-        String expectedLogMessage = "Push element 1.0 into stack";
-        viewModel.setPushElement("1.0");
+        Double element = 11.0;
+        viewModel.setPushElement(Double.toString(element));
 
         viewModel.pushNewElement();
 
-        assertEquals(expectedLogMessage, viewModel.getLogList().get(0));
+        String expectedLogMessage = viewModel.getLogList().get(0);
+        assertTrue(expectedLogMessage.matches("(.*)" + element + "(.*)"));
     }
 
     @Test
     public void logIsCorrectWhenPopElement() {
-        String expectedLogMessage = "Pop element 2.0 from stack";
-        viewModel.setPushElement("2.0");
+        Double element = 10.0;
+        viewModel.setPushElement(Double.toString(element));
         viewModel.pushNewElement();
 
         viewModel.popElement();
 
-        assertEquals(expectedLogMessage, viewModel.getLogList().get(1));
+        String expectedLogMessage = viewModel.getLogList().get(1);
+        assertTrue(expectedLogMessage.matches("(.*)" + element + "(.*)"));
     }
 
     @Test
     public void logIsCorrectWhenPushNonValidElement() {
-        String logMessage = "Pushing element ! has invalid format";
-        viewModel.setPushElement("!");
+        String element = "!";
+        viewModel.setPushElement(element);
 
         viewModel.pushNewElement();
 
-        assertEquals(logMessage, viewModel.getLogList().get(0));
+        String expectedLogMessage = viewModel.getLogList().get(0);
+        assertTrue(expectedLogMessage.matches("(.*)" + element + "(.*)"));
     }
 
     @Test
