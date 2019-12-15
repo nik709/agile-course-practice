@@ -87,9 +87,6 @@ public class Dijkstra {
         createGraphButton.setOnAction(e -> viewModel.createGraph());
         calculatePathButton.setOnAction(e -> viewModel.calculatePath());
 
-        fromComboBox.setItems(viewModel.getVertexList());
-        toComboBox.setItems(viewModel.getVertexList());
-
         fromComboBox.valueProperty().bindBidirectional(viewModel.vertexFromProperty());
         toComboBox.valueProperty().bindBidirectional(viewModel.vertexToProperty());
 
