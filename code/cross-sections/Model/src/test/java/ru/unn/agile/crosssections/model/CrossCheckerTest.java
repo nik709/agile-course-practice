@@ -3,29 +3,29 @@ package ru.unn.agile.crosssections.model;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class CrossCheckerTest {
 
-    private double delta = 1e-3;
-
     @Test
     public void canInitCrossChecker() {
-        var checker = new CrossChecker();
+        CrossChecker checker = new CrossChecker();
         assertNotNull(checker);
     }
 
     @Test
-    public void canCreatePoint() {
-        int x = 0;
-        int y = 1;
+    public void canInitPoint() {
+        int x = 3;
+        int y = 2;
         Point point = new Point(x, y);
         assertNotNull(point);
     }
 
     @Test
-    public void canCreatePointNegative() {
-        int x = -2;
-        int y = -4;
+    public void canInitPointNegative() {
+        int x = -3;
+        int y = -2;
         Point point = new Point(x, y);
         assertNotNull(point);
     }
@@ -51,5 +51,15 @@ public class CrossCheckerTest {
         Point a = new Point(-1, -2);
         Point b = new Point(-1, -2);
         Section section = new Section(a, b);
+    }
+
+    @Test
+    public void canCheckCrossOnTheSameSections() {
+        Point a = new Point(0, 2);
+        Point b = new Point(2, 2);
+        Section section1 = new Section(a, b);
+        Section section2 = new Section(a, b);
+        CrossChecker checker = new CrossChecker();
+        assertTrue(checker.check(section1, section2));
     }
 }

@@ -1,5 +1,7 @@
 package ru.unn.agile.crosssections.model;
 
+import java.util.Objects;
+
 public class Section {
 
     private Point a;
@@ -27,5 +29,19 @@ public class Section {
 
     public void setB(Point b) {
         this.b = b;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Section section = (Section) o;
+        return Objects.equals(a, section.a) &&
+                Objects.equals(b, section.b);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a, b);
     }
 }
