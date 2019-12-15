@@ -24,21 +24,21 @@ public class CurrencyConverterTest {
     @Test
     public void canConvertRubleToEuro() {
         var converter = new RubleEuroConverter();
-        var expectedEuro = 143;
+        var expectedEuro = 140;
         assertEquals(expectedEuro, converter.convert(10000), delta);
     }
 
     @Test
     public void canConvertEuroToDollar() {
         var converter = new EuroDollarConverter();
-        var expectedDollar = 111;
+        var expectedDollar = 112.00000000000001;
         assertEquals(expectedDollar, converter.convert(100), delta);
     }
 
     @Test
     public void canConvertDollarToEuro() {
         var converter = new DollarEuroConverter();
-        var expectedEuro = 8992;
+        var expectedEuro = 8900;
         assertEquals(expectedEuro, converter.convert(10000), delta);
     }
 
@@ -51,6 +51,13 @@ public class CurrencyConverterTest {
 
     @Test
     public void canConvertRubleToDollar() {
+        var converter = new RubleDollarConverter();
+        var expectedDollar = 160;
+        assertEquals(expectedDollar, converter.convert(10000), delta);
+    }
+
+    @Test
+    public void cannotConvertNegative() {
         var converter = new RubleDollarConverter();
         var expectedDollar = 160;
         assertEquals(expectedDollar, converter.convert(10000), delta);

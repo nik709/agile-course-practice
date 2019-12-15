@@ -1,11 +1,11 @@
 package ru.unn.agile.currencyconverter.model;
 
-public class EuroRubleConverter implements CurrencyConverter {
+import static ru.unn.agile.currencyconverter.model.ExchangeRates.EURO_TO_RUBLE;
 
-    private final double exchange = 69.86;
+public class EuroRubleConverter implements CurrencyConverter {
 
     @Override
     public double convert(final double euro) {
-        return euro * exchange;
+        return euro * EURO_TO_RUBLE;
     }
 }
