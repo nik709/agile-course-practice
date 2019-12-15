@@ -7,10 +7,12 @@ public class PrimeNumberFinder {
 
     public PrimeNumberFinder(final int startSpan, final int endSpan) {
         if (startSpan < 0 || endSpan < 0) {
-            throw new IllegalArgumentException("Span's borders should be positive!");
+            throw new IllegalArgumentException(
+                    "Span's borders should be positive!");
         }
         if (startSpan > endSpan) {
-            throw new IllegalArgumentException("Span's right border should be bigger than left border!");
+            throw new IllegalArgumentException(
+                    "Span's right border should be bigger than left border!");
         }
         this.endSpan = endSpan;
         this.startSpan = startSpan;
@@ -29,17 +31,30 @@ public class PrimeNumberFinder {
         return result.toString();
     }
 
-    private boolean isOriginalPrimeNumber(int number) {
-        return (number == 1 ||
-                number == 3 ||
-                number == 5 ||
-                number == 7);
+    private boolean isOriginalPrimeNumber(final int number) {
+        return (number == Originals.ONE.number
+                || number == Originals.THREE.number
+                || number == Originals.FIVE.number
+                || number == Originals.SEVEN.number);
     }
 
-    private boolean isNotDividePrimeNumber(int number) {
-        return (number % 2 != 0 &&
-                number % 3 != 0 &&
-                number % 5 != 0 &&
-                number % 7 != 0);
+    private boolean isNotDividePrimeNumber(final int number) {
+        return (number % 2 != 0
+                && number % 3 != 0
+                && number % 5 != 0
+                && number % 7 != 0);
+    }
+
+    enum Originals {
+        ONE(1),
+        THREE(3),
+        FIVE(5),
+        SEVEN(7);
+
+        private final int number;
+
+        Originals(final int number) {
+            this.number = number;
+        }
     }
 }
