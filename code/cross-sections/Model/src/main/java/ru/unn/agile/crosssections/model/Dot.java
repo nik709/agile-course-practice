@@ -2,12 +2,12 @@ package ru.unn.agile.crosssections.model;
 
 import java.util.Objects;
 
-public class Point {
+public class Dot {
 
     private int x;
     private int y;
 
-    public Point(final int x, final int y) {
+    public Dot(final int x, final int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,12 +22,15 @@ public class Point {
 
     @Override
     public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Point point = (Point) o;
-        return x == point.x
-                && y == point.y;
+        Dot dot = (Dot) o;
+        return x == dot.x
+                && y == dot.y;
     }
 
     @Override

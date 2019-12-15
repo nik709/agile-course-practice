@@ -2,10 +2,10 @@ package ru.unn.agile.crosssections.model;
 
 public class Section {
 
-    private Point a;
-    private Point b;
+    private Dot a;
+    private Dot b;
 
-    public Section(final Point a, final Point b) {
+    public Section(final Dot a, final Dot b) {
         if (a.equals(b)) {
             throw new IllegalArgumentException("Points should not be in one place");
         }
@@ -13,11 +13,11 @@ public class Section {
         this.b = b;
     }
 
-    public Point getA() {
+    public Dot getA() {
         return a;
     }
 
-    public Point getB() {
+    public Dot getB() {
         return b;
     }
 }
