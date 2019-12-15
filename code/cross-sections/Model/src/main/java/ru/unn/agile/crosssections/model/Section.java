@@ -7,7 +7,7 @@ public class Section {
     private Point a;
     private Point b;
 
-    public Section(Point a, Point b) {
+    public Section(final Point a, final Point b) {
         if (a.equals(b)) {
             throw new IllegalArgumentException("Points should not be in one place");
         }
@@ -19,22 +19,18 @@ public class Section {
         return a;
     }
 
-    public void setA(Point a) {
-        this.a = a;
-    }
-
     public Point getB() {
         return b;
     }
 
-    public void setB(Point b) {
-        this.b = b;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Section section = (Section) o;
         return Objects.equals(a, section.a) &&
                 Objects.equals(b, section.b);
