@@ -29,4 +29,20 @@ public class CrossCheckerTest {
         Point point = new Point(x, y);
         assertNotNull(point);
     }
+
+    @Test
+    public void canCreateSection() {
+        Point a = new Point(1, 2);
+        Point b = new Point(1, 3);
+        Section section = new Section(a, b);
+        assertNotNull(section);
+    }
+
+    @Test
+    public void canCreateSectionNegative() {
+        Point a = new Point(-1, -2);
+        Point b = new Point(-1, -3);
+        Section section = new Section(a, b);
+        assertNotNull(section);
+    }
 }
