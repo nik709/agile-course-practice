@@ -22,22 +22,4 @@ public class Section {
     public Point getB() {
         return b;
     }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Section section = (Section) o;
-        return Objects.equals(a, section.a)
-                && Objects.equals(b, section.b);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(a, b);
-    }
 }
