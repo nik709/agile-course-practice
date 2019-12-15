@@ -102,7 +102,7 @@ public class HuffmanTest {
                 + "100101101010100110011001101100010010010010010000000000000001"
                 + "1110011101111001101111011111101011111111100011101");
     }
-/*
+
     @Test
     public void canCompareTwoTheSameStringsWithTheSameAlphabets() {
         Huffman.encodString("170995o0unn");
@@ -111,27 +111,41 @@ public class HuffmanTest {
 
     @Test
     public void encodedStringsAreEqualForTwoDifferentStringsWithTheSimilarAlphabets() {
-        assertEquals(Huffman.encodString("abbb").getEncodedString().equals(Huffman.encodString("baaa").getEncodedString()));
+        Huffman.encodString("abbb");
+        String str1 = Huffman.getEncodedString();
+        Huffman.encodString("baaa");
+        String str2 = Huffman.getEncodedString();
+        assertEquals(str1.equals(str2));
     }
 
     @Test
     public void equalsIsFalseForTwoDifferentStringsWithTheSameAlphabets() {
-        assertFalse(Huffman.encodString("abbb").equals(Huffman.encodString("baaa")));
+        Huffman.encodString("abbb");
+        String str1 = Huffman.getEncodedString();
+        Huffman.encodString("baaa");
+        String str2 = Huffman.getEncodedString();
+        assertFalse(str1.equals(str2));
     }
 
     @Test
     public void decodedStringsAreDifferentForTwoDifferentStringsWithDifferentAlphabets() {
-        assertFalse(Huffman.encodString("abbb").getEncodedString().equals(Huffman.encodString("cabbb").getEncodedString()));
-    }*/
-/*
+        Huffman.encodString("abbb");
+        String str1 = Huffman.getEncodedString();
+        Huffman.encodString("cabbb");
+        String str2 = Huffman.getEncodedString();
+        assertFalse(str1.equals(str2));
+    }
+
     @Test
     public void canCompareWithNullObject() {
-        assertFalse(Huffman.encodString("100").equals(null));
+        Huffman.encodString("100");
+        assertFalse(Huffman.getEncodedString().equals(null));
     }
 
     @Test
     public void canCompareWithAnotherObject() {;
         Integer num = Integer.valueOf(100);
-        assertFalse(Huffman.encodString("100").equals(num));
-    }*/
+        Huffman.encodString("100")
+        assertFalse(Huffman.getEncodedString().equals(num));
+    }
 }
