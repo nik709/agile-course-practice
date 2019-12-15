@@ -107,9 +107,9 @@ public class HuffmanTest {
     @Test
     public void canCompareTwoTheSameStringsWithTheSameAlphabets() {
         Huffman.encodString("170995o0unn");
-        String str1 = HuffmangetEncodedString();
+        String str1 = Huffman.getEncodedString();
         Huffman.encodString("170995o0unn");
-        String str2 = HuffmangetEncodedString(); 
+        String str2 = Huffman.getEncodedString(); 
         assertTrue(str1.equals(str2));
     }
 
