@@ -99,24 +99,24 @@ public class CrossCheckerTest {
 
     @Test
     public void canCheckCrossInTheMiddle() {
-        Point a1 = new Point(1, 1);
-        Point b1 = new Point(-1, -1);
-        Section section1 = new Section(a1, b1);
-        Point a2 = new Point(1, -1);
-        Point b2 = new Point(-1, 1);
-        Section section2 = new Section(a2, b2);
+        Point a = new Point(1, 1);
+        Point b = new Point(-1, -1);
+        Section section1 = new Section(a, b);
+        Point c = new Point(1, -1);
+        Point d = new Point(-1, 1);
+        Section section2 = new Section(c, d);
         CrossChecker checker = new CrossChecker();
         assertTrue(checker.check(section1, section2));
     }
 
     @Test
     public void canCheckNotCross() {
-        Point a1 = new Point(0, 2);
-        Point b1 = new Point(2, 2);
-        Section section1 = new Section(a1, b1);
-        Point a2 = new Point(0, 0);
-        Point b2 = new Point(2, 0);
-        Section section2 = new Section(a2, b2);
+        Point a = new Point(0, 2);
+        Point b = new Point(2, 2);
+        Section section1 = new Section(a, b);
+        Point c = new Point(0, 0);
+        Point d = new Point(2, 0);
+        Section section2 = new Section(c, d);
         CrossChecker checker = new CrossChecker();
         assertFalse(checker.check(section1, section2));
     }
