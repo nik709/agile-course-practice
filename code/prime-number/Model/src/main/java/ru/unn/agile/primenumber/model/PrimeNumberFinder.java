@@ -1,7 +1,5 @@
 package ru.unn.agile.primenumber.model;
 
-import java.util.*;
-
 public class PrimeNumberFinder {
 
     private int startSpan;
@@ -23,7 +21,7 @@ public class PrimeNumberFinder {
         StringBuilder result = new StringBuilder();
         String prefix = "";
         for (int i = startSpan; i < endSpan; i++) {
-            if (i == 1 || i == 3) {
+            if (i == 1 || i == 3 || i == 5) {
                 result.append(prefix)
                         .append(i);
                 prefix = " ";
