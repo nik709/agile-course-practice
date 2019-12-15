@@ -62,6 +62,8 @@ include "code/fractioncalculator"
 project(":code/fractioncalculator").name = "fractioncalculator"
 // Гришин Дмитрий
 // sorting
+include "code/sorting/Infrastructure"
+project(":code/sorting/Infrastructure").name = "sorting-Infrastructure"
 include "code/sorting/Model"
 project(":code/sorting/Model").name = "sorting-Model"
 include "code/sorting/View"
