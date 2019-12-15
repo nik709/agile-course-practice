@@ -10,56 +10,54 @@ public class CurrencyConverterTest {
 
     @Test
     public void canCreateConverter() {
-        var converter = new EuroRubleConverter();
+        var converter = new CurrencyConverter(CurrencyPair.DOLLAR_TO_EURO,1);
         assertNotNull(converter);
     }
 
     @Test
     public void canConvertEuroToRuble() {
-        var converter = new EuroRubleConverter();
+        var converter = new CurrencyConverter(CurrencyPair.EURO_TO_RUBLE, 1);
         var expectedRuble = 69.86;
-        assertEquals(expectedRuble, converter.convert(1), delta);
+        assertEquals(expectedRuble, converter.convert(), delta);
     }
 
     @Test
     public void canConvertRubleToEuro() {
-        var converter = new RubleEuroConverter();
+        var converter = new CurrencyConverter(CurrencyPair.RUBLE_TO_EURO, 10000);
         var expectedEuro = 140;
-        assertEquals(expectedEuro, converter.convert(10000), delta);
+        assertEquals(expectedEuro, converter.convert(), delta);
     }
 
     @Test
     public void canConvertEuroToDollar() {
-        var converter = new EuroDollarConverter();
+        var converter = new CurrencyConverter(CurrencyPair.EURO_TO_DOLLAR, 100);
         var expectedDollar = 112.00000000000001;
-        assertEquals(expectedDollar, converter.convert(100), delta);
+        assertEquals(expectedDollar, converter.convert(), delta);
     }
 
     @Test
     public void canConvertDollarToEuro() {
-        var converter = new DollarEuroConverter();
+        var converter = new CurrencyConverter(CurrencyPair.DOLLAR_TO_EURO, 10000);
         var expectedEuro = 8900;
-        assertEquals(expectedEuro, converter.convert(10000), delta);
+        assertEquals(expectedEuro, converter.convert(), delta);
     }
 
     @Test
     public void canConvertDollarToRuble() {
-        var converter = new DollarRubleConverter();
+        var converter = new CurrencyConverter(CurrencyPair.DOLLAR_TO_RUBLE, 10);
         var expectedRuble = 625.5;
-        assertEquals(expectedRuble, converter.convert(10), delta);
+        assertEquals(expectedRuble, converter.convert(), delta);
     }
 
     @Test
     public void canConvertRubleToDollar() {
-        var converter = new RubleDollarConverter();
+        var converter = new CurrencyConverter(CurrencyPair.RUBLE_TO_DOLLAR, 10000);
         var expectedDollar = 160;
-        assertEquals(expectedDollar, converter.convert(10000), delta);
+        assertEquals(expectedDollar, converter.convert(), delta);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void cannotConvertNegative() {
-        var converter = new RubleDollarConverter();
-        var expectedDollar = 160;
-        assertEquals(expectedDollar, converter.convert(10000), delta);
+        var converter = new CurrencyConverter(CurrencyPair.EURO_TO_RUBLE, -10000);
     }
 }
