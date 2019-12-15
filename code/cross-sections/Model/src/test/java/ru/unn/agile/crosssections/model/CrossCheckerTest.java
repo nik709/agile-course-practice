@@ -78,8 +78,20 @@ public class CrossCheckerTest {
         Point a = new Point(0, 0);
         Point b = new Point(2, 2);
         Section section1 = new Section(a, b);
-        Point c = new Point(0, 2);
+        Point c = new Point(0, 0);
         Point d = new Point(0, 2);
+        Section section2 = new Section(c, d);
+        CrossChecker checker = new CrossChecker();
+        assertTrue(checker.check(section1, section2));
+    }
+
+    @Test
+    public void canCheckCrossOnTheSameEndSections() {
+        Point a = new Point(0, 0);
+        Point b = new Point(2, 2);
+        Section section1 = new Section(a, b);
+        Point c = new Point(0, 2);
+        Point d = new Point(2, 2);
         Section section2 = new Section(c, d);
         CrossChecker checker = new CrossChecker();
         assertTrue(checker.check(section1, section2));
