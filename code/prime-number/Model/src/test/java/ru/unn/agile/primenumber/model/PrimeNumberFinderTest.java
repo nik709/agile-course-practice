@@ -8,8 +8,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class PrimeNumberFinderTest {
 
-    private double delta = 1e-3;
-
     @Test
     public void canInitFinder() {
         var finder = new PrimeNumberFinder(0, 10);
@@ -35,42 +33,42 @@ public class PrimeNumberFinderTest {
     public void cannotFindNumber0() {
         var finder = new PrimeNumberFinder(0, 1);
         var result = finder.findNumbers();
-        assertEquals("",result);
+        assertEquals("", result);
     }
 
     @Test
     public void canFindNumber1() {
         var finder = new PrimeNumberFinder(0, 2);
         var result = finder.findNumbers();
-        assertEquals("1",result);
+        assertEquals("1", result);
     }
 
     @Test
     public void canFindNumber3() {
         var finder = new PrimeNumberFinder(0, 4);
         var result = finder.findNumbers();
-        assertEquals("1 3",result);
+        assertEquals("1 3", result);
     }
 
     @Test
     public void canFindNumber5() {
         var finder = new PrimeNumberFinder(0, 6);
         var result = finder.findNumbers();
-        assertEquals("1 3 5",result);
+        assertEquals("1 3 5", result);
     }
 
     @Test
     public void canFindNumber7() {
         var finder = new PrimeNumberFinder(0, 8);
         var result = finder.findNumbers();
-        assertEquals("1 3 5 7",result);
+        assertEquals("1 3 5 7", result);
     }
 
     @Test
     public void canFindNumber11() {
         var finder = new PrimeNumberFinder(0, 12);
         var result = finder.findNumbers();
-        assertEquals("1 3 5 7 11",result);
+        assertEquals("1 3 5 7 11", result);
     }
 
     @Test

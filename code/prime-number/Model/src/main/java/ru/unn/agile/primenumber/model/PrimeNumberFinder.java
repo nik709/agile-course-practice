@@ -3,7 +3,6 @@ package ru.unn.agile.primenumber.model;
 public class PrimeNumberFinder {
 
     private int startSpan;
-
     private int endSpan;
 
     public PrimeNumberFinder(final int startSpan, final int endSpan) {
