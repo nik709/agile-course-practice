@@ -21,4 +21,11 @@ public class CurrencyConverterTest {
         assertEquals(expectedRuble, converter.convert(1), delta);
     }
 
+    @Test
+    public void canConvertRubleToEuro() {
+        var converter = new RubleEuroConverter();
+        var expectedEuro = 143;
+        assertEquals(expectedEuro, converter.convert(10000), delta);
+    }
+
 }
