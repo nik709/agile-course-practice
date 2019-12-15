@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class CrossCheckerTest {
 
@@ -95,4 +96,29 @@ public class CrossCheckerTest {
         CrossChecker checker = new CrossChecker();
         assertTrue(checker.check(section1, section2));
     }
+
+    @Test
+    public void canCheckCrossInTheMiddle() {
+        Point a1 = new Point(1, 1);
+        Point b1 = new Point(-1, -1);
+        Section section1 = new Section(a1, b1);
+        Point a2 = new Point(1, -1);
+        Point b2 = new Point(-1, 1);
+        Section section2 = new Section(a2, b2);
+        CrossChecker checker = new CrossChecker();
+        assertTrue(checker.check(section1, section2));
+    }
+
+    @Test
+    public void canCheckNotCross() {
+        Point a1 = new Point(0, 2);
+        Point b1 = new Point(2, 2);
+        Section section1 = new Section(a1, b1);
+        Point a2 = new Point(0, 0);
+        Point b2 = new Point(2, 0);
+        Section section2 = new Section(a2, b2);
+        CrossChecker checker = new CrossChecker();
+        assertFalse(checker.check(section1, section2));
+    }
+
 }

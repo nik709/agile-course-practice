@@ -32,8 +32,8 @@ public class Section {
             return false;
         }
         Section section = (Section) o;
-        return Objects.equals(a, section.a) &&
-                Objects.equals(b, section.b);
+        return Objects.equals(a, section.a)
+                && Objects.equals(b, section.b);
     }
 
     @Override

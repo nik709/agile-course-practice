@@ -29,8 +29,8 @@ public class Point {
             return false;
         }
         Point point = (Point) o;
-        return x == point.x &&
-                y == point.y;
+        return x == point.x
+                && y == point.y;
     }
 
     @Override
