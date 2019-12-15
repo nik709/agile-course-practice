@@ -232,3 +232,6 @@ include "code/stack/View"
 project(":code/stack/View").name = "stack-View"
 include "code/stack/ViewModel"
 project(":code/stack/ViewModel").name = "stack-ViewModel"
+// Cross Sections
+include "code/cross-sections/Model"
+project(":code/cross-sections/Model").name = "cross-sections-Model"
