@@ -21,7 +21,7 @@ public class PrimeNumberFinder {
         StringBuilder result = new StringBuilder();
         String prefix = "";
         for (int i = startSpan; i < endSpan; i++) {
-            if (i == 1 || i == 3 || i == 5) {
+            if (i == 1 || i == 3 || i == 5 || i == 7) {
                 result.append(prefix)
                         .append(i);
                 prefix = " ";
