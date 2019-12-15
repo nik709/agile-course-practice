@@ -25,4 +25,10 @@ public class PrimeNumberFinderTest {
         var finder = new PrimeNumberFinder(0, -1);
         assertNotNull(finder);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotInitFinderWithEndBiggerThanStart() {
+        var finder = new PrimeNumberFinder(10, 0);
+        assertNotNull(finder);
+    }
 }

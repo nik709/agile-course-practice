@@ -12,6 +12,9 @@ public class PrimeNumberFinder {
         if (startSpan < 0 || endSpan < 0) {
             throw new IllegalArgumentException("Span's borders should be positive!");
         }
+        if (startSpan > endSpan) {
+            throw new IllegalArgumentException("Span's right border should be bigger than left border!");
+        }
         this.endSpan = endSpan;
         this.startSpan = startSpan;
     }
