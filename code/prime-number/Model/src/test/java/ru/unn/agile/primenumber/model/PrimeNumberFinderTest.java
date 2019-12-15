@@ -44,4 +44,11 @@ public class PrimeNumberFinderTest {
         assertEquals("1",result);
     }
 
+    @Test
+    public void canFindNumber3() {
+        var finder = new PrimeNumberFinder(0, 4);
+        var result = finder.findNumbers();
+        assertEquals("1 3",result);
+    }
+
 }

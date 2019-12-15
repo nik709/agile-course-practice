@@ -21,9 +21,12 @@ public class PrimeNumberFinder {
 
     public String findNumbers() {
         StringBuilder result = new StringBuilder();
+        String prefix = "";
         for (int i = startSpan; i < endSpan; i++) {
-            if (i == 1) {
-                result.append(i);
+            if (i == 1 || i == 3) {
+                result.append(prefix)
+                        .append(i);
+                prefix = " ";
             }
         }
         return result.toString();
