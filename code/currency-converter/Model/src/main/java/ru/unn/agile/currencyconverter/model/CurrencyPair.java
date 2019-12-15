@@ -10,7 +10,7 @@ public enum CurrencyPair {
 
     private double exchange;
 
-    CurrencyPair(double exchange){
+    CurrencyPair(double exchange) {
         this.exchange = exchange;
     }
 

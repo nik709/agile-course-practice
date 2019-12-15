@@ -5,14 +5,14 @@ public class CurrencyConverter {
     private double currency;
 
     public CurrencyConverter(CurrencyPair currencyPair, double currency) {
-        if (currency <= 0){
+        if (currency <= 0) {
             throw new IllegalArgumentException("Currency should be positive!");
         }
         this.currencyPair = currencyPair;
         this.currency = currency;
     }
 
-    public double convert(){
-       return currency * currencyPair.getExchange();
+    public double convert() {
+        return currency * currencyPair.getExchange();
     }
 }

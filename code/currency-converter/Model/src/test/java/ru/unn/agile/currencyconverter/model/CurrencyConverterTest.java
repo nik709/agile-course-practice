@@ -10,7 +10,7 @@ public class CurrencyConverterTest {
 
     @Test
     public void canCreateConverter() {
-        var converter = new CurrencyConverter(CurrencyPair.DOLLAR_TO_EURO,1);
+        var converter = new CurrencyConverter(CurrencyPair.DOLLAR_TO_EURO, 1);
         assertNotNull(converter);
     }
 
