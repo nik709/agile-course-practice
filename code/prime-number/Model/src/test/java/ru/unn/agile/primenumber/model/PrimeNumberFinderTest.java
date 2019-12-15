@@ -2,6 +2,7 @@ package ru.unn.agile.primenumber.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -70,6 +71,20 @@ public class PrimeNumberFinderTest {
         var finder = new PrimeNumberFinder(0, 12);
         var result = finder.findNumbers();
         assertEquals("1 3 5 7 11",result);
+    }
+
+    @Test
+    public void canFindNumber101() {
+        var finder = new PrimeNumberFinder(0, 102);
+        var result = finder.findNumbers();
+        assertTrue(result.contains(" 101"));
+    }
+
+    @Test
+    public void canFindNumber907() {
+        var finder = new PrimeNumberFinder(0, 1000);
+        var result = finder.findNumbers();
+        assertTrue(result.contains(" 907"));
     }
 
 }
