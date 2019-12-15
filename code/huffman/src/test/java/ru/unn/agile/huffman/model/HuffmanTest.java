@@ -109,7 +109,7 @@ public class HuffmanTest {
         Huffman.encodString("170995o0unn");
         String str1 = Huffman.getEncodedString();
         Huffman.encodString("170995o0unn");
-        String str2 = Huffman.getEncodedString(); 
+        String str2 = Huffman.getEncodedString();
         assertTrue(str1.equals(str2));
     }
 
@@ -147,7 +147,7 @@ public class HuffmanTest {
     }
 
     @Test
-    public void canCompareWithAnotherObject() {;
+    public void canCompareWithAnotherObject() {
         Integer num = Integer.valueOf(100);
         Huffman.encodString("100");
         assertFalse(Huffman.getEncodedString().equals(num));
