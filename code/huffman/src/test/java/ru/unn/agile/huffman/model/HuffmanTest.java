@@ -7,7 +7,8 @@ import static org.junit.Assert.*;
 public class HuffmanTest {
     @Test
     public void canCreateHuffmanWithEmptyString() {
-        assertNotNull(Huffman.encodString(""));
+        Huffman.encodString("");
+        assertNotNull(Huffman.getDecodedString());
     }
 
     @Test
@@ -106,7 +107,10 @@ public class HuffmanTest {
     @Test
     public void canCompareTwoTheSameStringsWithTheSameAlphabets() {
         Huffman.encodString("170995o0unn");
-        assertEquals(Huffman.getEncodedString().equals(Huffman.encodString("170995o0unn")));
+        String str1 = HuffmangetEncodedString();
+        Huffman.encodString("170995o0unn");
+        String str2 = HuffmangetEncodedString(); 
+        assertTrue(str1.equals(str2));
     }
 
     @Test
@@ -115,7 +119,7 @@ public class HuffmanTest {
         String str1 = Huffman.getEncodedString();
         Huffman.encodString("baaa");
         String str2 = Huffman.getEncodedString();
-        assertEquals(str1.equals(str2));
+        assertTrue(str1.equals(str2));
     }
 
     @Test
