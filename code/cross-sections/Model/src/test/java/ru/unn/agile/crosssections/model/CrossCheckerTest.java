@@ -62,4 +62,26 @@ public class CrossCheckerTest {
         CrossChecker checker = new CrossChecker();
         assertTrue(checker.check(section1, section2));
     }
+
+    @Test
+    public void canCheckCrossOnTheSameNegativeSections() {
+        Point a = new Point(-1, -2);
+        Point b = new Point(-2, -2);
+        Section section1 = new Section(a, b);
+        Section section2 = new Section(a, b);
+        CrossChecker checker = new CrossChecker();
+        assertTrue(checker.check(section1, section2));
+    }
+
+    @Test
+    public void canCheckCrossOnTheSameStartSections() {
+        Point a = new Point(0, 0);
+        Point b = new Point(2, 2);
+        Section section1 = new Section(a, b);
+        Point c = new Point(0, 2);
+        Point d = new Point(0, 2);
+        Section section2 = new Section(c, d);
+        CrossChecker checker = new CrossChecker();
+        assertTrue(checker.check(section1, section2));
+    }
 }

@@ -6,6 +6,6 @@ public class CrossChecker {
     }
 
     public boolean check(Section section1, Section section2) {
-        return section1.equals(section2);
+        return section1.equals(section2) || section1.getA() == section2.getA();
     }
 }
