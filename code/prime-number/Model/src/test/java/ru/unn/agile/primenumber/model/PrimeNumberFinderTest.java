@@ -31,9 +31,17 @@ public class PrimeNumberFinderTest {
     }
 
     @Test
+    public void cannotFindNumber0() {
+        var finder = new PrimeNumberFinder(0, 1);
+        var result = finder.findNumbers();
+        assertEquals("",result);
+    }
+
+    @Test
     public void canFindNumber1() {
         var finder = new PrimeNumberFinder(0, 2);
         var result = finder.findNumbers();
         assertEquals("1",result);
     }
+
 }
