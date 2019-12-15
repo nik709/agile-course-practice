@@ -1,7 +1,5 @@
 package ru.unn.agile.crosssections.model;
 
-import java.util.Objects;
-
 public class Section {
 
     private Point a;
