@@ -28,4 +28,11 @@ public class CurrencyConverterTest {
         assertEquals(expectedEuro, converter.convert(10000), delta);
     }
 
+    @Test
+    public void canConvertEuroToDollar() {
+        var converter = new EuroDollarConverter();
+        var expectedDollar = 111;
+        assertEquals(expectedDollar, converter.convert(100), delta);
+    }
+
 }
