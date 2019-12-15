@@ -45,4 +45,11 @@ public class CrossCheckerTest {
         Section section = new Section(a, b);
         assertNotNull(section);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotCreateSectionWithTheSamePoints() {
+        Point a = new Point(-1, -2);
+        Point b = new Point(-1, -2);
+        Section section = new Section(a, b);
+    }
 }
