@@ -41,4 +41,11 @@ public class CurrencyConverterTest {
         var expectedEuro = 8992;
         assertEquals(expectedEuro, converter.convert(10000), delta);
     }
+
+    @Test
+    public void canConvertDollarToRuble() {
+        var converter = new DollarRubleConverter();
+        var expectedRuble = 625.5;
+        assertEquals(expectedRuble, converter.convert(10), delta);
+    }
 }
