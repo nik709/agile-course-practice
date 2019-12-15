@@ -21,7 +21,8 @@ public class PrimeNumberFinder {
     public String findNumbers() {
         StringBuilder result = new StringBuilder();
         String prefix = "";
-        for (int i = startSpan; i < endSpan; i++) {
+        int realStart = Math.max(startSpan, 2);
+        for (int i = realStart; i < endSpan; i++) {
             if (isOriginalPrimeNumber(i) || isNotDividePrimeNumber(i)) {
                 result.append(prefix)
                         .append(i);
@@ -32,7 +33,7 @@ public class PrimeNumberFinder {
     }
 
     private boolean isOriginalPrimeNumber(final int number) {
-        return (number == Originals.ONE.number
+        return (number == Originals.TWO.number
                 || number == Originals.THREE.number
                 || number == Originals.FIVE.number
                 || number == Originals.SEVEN.number);
@@ -46,7 +47,6 @@ public class PrimeNumberFinder {
     }
 
     enum Originals {
-        ONE(1),
         TWO(2),
         THREE(3),
         FIVE(5),
