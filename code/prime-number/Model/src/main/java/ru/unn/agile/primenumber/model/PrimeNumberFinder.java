@@ -21,12 +21,26 @@ public class PrimeNumberFinder {
         StringBuilder result = new StringBuilder();
         String prefix = "";
         for (int i = startSpan; i < endSpan; i++) {
-            if (i == 1 || i == 3 || i == 5 || i == 7) {
+            if (isOriginalPrimeNumber(i) || isNotDividePrimeNumber(i)) {
                 result.append(prefix)
                         .append(i);
                 prefix = " ";
             }
         }
         return result.toString();
+    }
+
+    private boolean isOriginalPrimeNumber(int number) {
+        return (number == 1 ||
+                number == 3 ||
+                number == 5 ||
+                number == 7);
+    }
+
+    private boolean isNotDividePrimeNumber(int number) {
+        return (number % 2 != 0 &&
+                number % 3 != 0 &&
+                number % 5 != 0 &&
+                number % 7 != 0);
     }
 }
