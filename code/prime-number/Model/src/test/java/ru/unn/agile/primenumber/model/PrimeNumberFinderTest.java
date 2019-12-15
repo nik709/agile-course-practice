@@ -85,4 +85,10 @@ public class PrimeNumberFinderTest {
         assertTrue(result.contains(" 907"));
     }
 
+    @Test
+    public void canFindNumbersTill100() {
+        var finder = new PrimeNumberFinder(0, 100);
+        var result = finder.findNumbers();
+        assertEquals(result, "1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97");
+    }
 }
