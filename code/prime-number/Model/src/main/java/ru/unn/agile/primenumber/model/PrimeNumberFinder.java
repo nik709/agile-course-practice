@@ -18,4 +18,14 @@ public class PrimeNumberFinder {
         this.endSpan = endSpan;
         this.startSpan = startSpan;
     }
+
+    public String findNumbers() {
+        StringBuilder result = new StringBuilder();
+        for (int i = startSpan; i < endSpan; i++) {
+            if (i == 1) {
+                result.append(i);
+            }
+        }
+        return result.toString();
+    }
 }

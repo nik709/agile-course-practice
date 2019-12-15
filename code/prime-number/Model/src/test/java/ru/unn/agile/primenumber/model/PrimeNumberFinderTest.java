@@ -2,6 +2,7 @@ package ru.unn.agile.primenumber.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class PrimeNumberFinderTest {
@@ -17,18 +18,22 @@ public class PrimeNumberFinderTest {
     @Test(expected = IllegalArgumentException.class)
     public void cannotInitFinderWithNegativeStart() {
         var finder = new PrimeNumberFinder(-1, 10);
-        assertNotNull(finder);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotInitFinderWithNegativeEnd() {
         var finder = new PrimeNumberFinder(0, -1);
-        assertNotNull(finder);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotInitFinderWithEndBiggerThanStart() {
         var finder = new PrimeNumberFinder(10, 0);
-        assertNotNull(finder);
+    }
+
+    @Test
+    public void canFindNumber1() {
+        var finder = new PrimeNumberFinder(0, 2);
+        var result = finder.findNumbers();
+        assertEquals("1",result);
     }
 }
