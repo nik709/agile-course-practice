@@ -145,7 +145,7 @@ public class HuffmanTest {
     @Test
     public void canCompareWithAnotherObject() {;
         Integer num = Integer.valueOf(100);
-        Huffman.encodString("100")
+        Huffman.encodString("100");
         assertFalse(Huffman.getEncodedString().equals(num));
     }
 }
