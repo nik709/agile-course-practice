@@ -39,14 +39,15 @@ public class PrimeNumberFinder {
     }
 
     private boolean isNotDividePrimeNumber(final int number) {
-        return (number % 2 != 0
-                && number % 3 != 0
-                && number % 5 != 0
-                && number % 7 != 0);
+        return (number % Originals.TWO.number != 0
+                && number % Originals.THREE.number != 0
+                && number % Originals.FIVE.number != 0
+                && number % Originals.SEVEN.number != 0);
     }
 
     enum Originals {
         ONE(1),
+        TWO(2),
         THREE(3),
         FIVE(5),
         SEVEN(7);
