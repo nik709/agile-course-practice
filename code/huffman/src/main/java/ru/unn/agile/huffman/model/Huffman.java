@@ -71,7 +71,7 @@ public class Huffman {
         return Objects.hashCode(encodedString);
     }
 
-    @Override
+/*    @Override
     public boolean equals(final Object object) {
         if (object == null) {
             return false;
@@ -84,7 +84,7 @@ public class Huffman {
         }
         Huffman huffmanCode = (Huffman) object;
         return Huffman.decodedString.equals(huffmanCode.getDecodedString());
-    }
+    }*/
 
     public static String getEncodedString() {
         return Huffman.encodedString;
