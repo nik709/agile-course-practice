@@ -20,8 +20,22 @@ public class ViewModel {
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
     private int key;
     private BinarySearch binarySearch;
+    private ILogger logger;
 
     public ViewModel() {
+       init();
+    }
+
+    public ViewModel(final ILogger logger) {
+        if (logger == null) {
+            throw new IllegalArgumentException("Logger parameter can't be null");
+        }
+        this.logger = logger;
+
+        init();
+    }
+
+    public void init() {
         arrayInput.set("");
         elementInput.set("");
         status.set("");
@@ -31,8 +45,8 @@ public class ViewModel {
 
         final List<StringProperty> fields = new ArrayList<StringProperty>() {
             {
-                 add(arrayInput);
-                 add(elementInput);
+                add(arrayInput);
+                add(elementInput);
             }
         };
         for (StringProperty field : fields) {

@@ -10,7 +10,7 @@ public class ViewModelTests {
 
     @Before
     public void setUp() {
-        viewModel = new ViewModel();
+        viewModel = new ViewModel(new FakeLogger());
     }
 
     @After
@@ -154,5 +154,20 @@ public class ViewModelTests {
         viewModel.setElementInputProperty("");
 
         assertEquals(Status.WAITING.toString(), viewModel.getStatusProperty());
+    }
+
+    @Test
+    public void canCreateViewModelWithLogger() {
+        var fakeLogger = new FakeLogger();
+        ViewModel newViewModel = new ViewModel(fakeLogger);
+
+        assertNotNull(newViewModel);
+    }
+
+    @Test
+    public void canCreateEmptyViewModel() {
+        ViewModel viewModel = new ViewModel();
+
+        assertNotNull(viewModel);
     }
 }
