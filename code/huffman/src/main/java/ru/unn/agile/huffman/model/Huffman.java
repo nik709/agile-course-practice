@@ -44,31 +44,32 @@ public class Huffman {
         decodedString = str;
         if ("".equals(decodedString)) {
             encodedString = "";
-            return;
         }
+        else {
+            Map<Character, Node> alphabet = buildAlphabet();
 
-        Map<Character, Node> alphabet = buildAlphabet();
+            PriorityQueue<Node> sortedAlphabet = new PriorityQueue<>();
 
-        PriorityQueue<Node> sortedAlphabet = new PriorityQueue<>();
+            sortedAlphabet.addAll(alphabet.values().stream().collect(Collectors.toList()));
 
-        sortedAlphabet.addAll(alphabet.values().stream().collect(Collectors.toList()));
+            while (sortedAlphabet.size() > 1) {
+                Node first = sortedAlphabet.poll();
+                Node second = sortedAlphabet.poll();
+                sortedAlphabet.add(new InternalNode(first, second));
+            }
 
-        while (sortedAlphabet.size() > 1) {
-            Node first = sortedAlphabet.poll();
-            Node second = sortedAlphabet.poll();
-            sortedAlphabet.add(new InternalNode(first, second));
+            if (alphabet.size() == 1) {
+                sortedAlphabet.poll().buildCode(CODE_0);
+            } else {
+                sortedAlphabet.poll().buildCode("");
+            }
+
+            encodedString = decodedString
+                    .chars()
+                    .mapToObj(ch -> alphabet.get((char) ch).getCode())
+                    .collect(Collectors.joining(""));
         }
-
-        if (alphabet.size() == 1) {
-            sortedAlphabet.poll().buildCode(CODE_0);
-        } else {
-            sortedAlphabet.poll().buildCode("");
-        }
-
-        encodedString = decodedString
-                .chars()
-                .mapToObj(ch -> alphabet.get((char) ch).getCode())
-                .collect(Collectors.joining(""));
+        
         return encodedString;
     }
 }
