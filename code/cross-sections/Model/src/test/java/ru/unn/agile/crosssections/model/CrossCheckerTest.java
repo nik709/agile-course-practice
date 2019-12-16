@@ -9,12 +9,6 @@ import static org.junit.Assert.assertFalse;
 public class CrossCheckerTest {
 
     @Test
-    public void canInitCrossChecker() {
-        CrossChecker checker = new CrossChecker();
-        assertNotNull(checker);
-    }
-
-    @Test
     public void canInitPoint() {
         int x = 3;
         int y = 2;
@@ -59,8 +53,7 @@ public class CrossCheckerTest {
         Dot b = new Dot(2, 2);
         Section section1 = new Section(a, b);
         Section section2 = new Section(a, b);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -69,8 +62,7 @@ public class CrossCheckerTest {
         Dot b = new Dot(-2, -2);
         Section section1 = new Section(a, b);
         Section section2 = new Section(a, b);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -81,8 +73,7 @@ public class CrossCheckerTest {
         Dot c = new Dot(0, 0);
         Dot d = new Dot(0, 2);
         Section section2 = new Section(c, d);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -93,8 +84,7 @@ public class CrossCheckerTest {
         Dot c = new Dot(0, 2);
         Dot d = new Dot(2, 2);
         Section section2 = new Section(c, d);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -105,8 +95,7 @@ public class CrossCheckerTest {
         Dot c = new Dot(2, 0);
         Dot d = new Dot(0, 2);
         Section section2 = new Section(c, d);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -117,8 +106,7 @@ public class CrossCheckerTest {
         Dot c = new Dot(0, -2);
         Dot d = new Dot(-2, 0);
         Section section2 = new Section(c, d);
-        CrossChecker checker = new CrossChecker();
-        assertTrue(checker.check(section1, section2));
+        assertTrue(CrossChecker.check(section1, section2));
     }
 
     @Test
@@ -129,8 +117,7 @@ public class CrossCheckerTest {
         Dot c = new Dot(0, 0);
         Dot d = new Dot(2, 0);
         Section section2 = new Section(c, d);
-        CrossChecker checker = new CrossChecker();
-        assertFalse(checker.check(section1, section2));
+        assertFalse(CrossChecker.check(section1, section2));
     }
 
 }
