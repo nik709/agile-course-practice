@@ -201,6 +201,8 @@ project(":code/priority-queue").name = "priority-queue"
 include "code/polygon-area"
 project(":code/polygon-area").name = "polygon-area-Model"
 // Федорова Дарья
+include "code/currency-converter/Model"
+project(":code/currency-converter/Model").name = "currency-converter-Model"
 // datastructure-set
 include "code/datastructure-set/Model"
 project(":code/datastructure-set/Model").name = "datastructure-set-Model"
