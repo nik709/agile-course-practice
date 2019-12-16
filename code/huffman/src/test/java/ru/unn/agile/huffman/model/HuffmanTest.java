@@ -80,13 +80,6 @@ public class HuffmanTest {
     }
 
     @Test
-    public void equalsIsFalseForTwoDifferentStringsWithTheSameAlphabets() {
-        String str1 = Huffman.encodeString("abbb");
-        String str2 = Huffman.encodeString("baaa");
-        assertFalse(str1.equals(str2));
-    }
-
-    @Test
     public void decodedStringsAreDifferentForTwoDifferentStringsWithDifferentAlphabets() {
         String str1 = Huffman.encodeString("abbb");
         String str2 = Huffman.encodeString("cabbb");
