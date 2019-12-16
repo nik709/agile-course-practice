@@ -2,13 +2,12 @@ package ru.unn.agile.huffman.model;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 import ru.unn.agile.huffman.model.node.*;
 
-public class Huffman {
+public final class Huffman {
     private static String encodedString;
     private static String decodedString;
 
@@ -44,8 +43,7 @@ public class Huffman {
         decodedString = str;
         if ("".equals(decodedString)) {
             encodedString = "";
-        }
-        else {
+        } else {
             Map<Character, Node> alphabet = buildAlphabet();
 
             PriorityQueue<Node> sortedAlphabet = new PriorityQueue<>();
@@ -69,7 +67,7 @@ public class Huffman {
                     .mapToObj(ch -> alphabet.get((char) ch).getCode())
                     .collect(Collectors.joining(""));
         }
-        
+
         return encodedString;
     }
 }
