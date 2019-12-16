@@ -56,7 +56,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="tablePoints" prefHeight="204.0" prefWidth="283.0">
+                <TableView fx:id="tablePoints" items="${viewModel.pointList}" prefHeight="204.0" prefWidth="283.0">
                     <columns>
                         <TableColumn maxWidth="148.0" minWidth="50.0" prefWidth="140.0" sortable="false" text="X" fx:id="xColumn" />
                         <TableColumn fx:id="yColumn" maxWidth="159.0" minWidth="75.0" prefWidth="119.0" sortable="false" text="Y" />

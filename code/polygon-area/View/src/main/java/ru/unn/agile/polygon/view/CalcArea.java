@@ -54,8 +54,6 @@ public class CalcArea {
         addPointButton.setOnAction(e -> viewModel.addPoint());
     }
     private void initTableView() {
-        tablePoints.setItems(viewModel.getPointList());
-
         xColumn.setCellValueFactory(
                 new PropertyValueFactory<Point, Double>("X"));
         yColumn.setCellValueFactory(
