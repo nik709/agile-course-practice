@@ -23,7 +23,8 @@ public class HuffmanTest {
 
     @Test
     public void encodedStringIsCorrectWithRepeatedAlphabeticSymbolInput() {
-        assertEquals(Huffman.encodeString("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"), "000000000000000000000000000000");
+        assertEquals(Huffman.encodeString("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"),
+        "000000000000000000000000000000");
     }
 
     @Test
@@ -58,15 +59,17 @@ public class HuffmanTest {
 
     @Test
     public void encodedStringIsCorrectWithNumericAndAlphabeticSymbolsInput() {
-        assertEquals(Huffman.encodeString("111aaa 9e9e9dm  ke3mm 2333 004040404"), "111011101110000000000101110011111100111111001101"
-                + "00011011011101111111011001001101110110011011011101100100010100010100010100010");
+        assertEquals(Huffman.encodeString("111aaa 9e9e9dm  ke3mm 2333 004040404"),
+            "111011101110000000000101110011111100111111001101"
+            + "00011011011101111111011001001101110110011011011101100100010100010100010100010");
     }
 
     @Test
     public void encodedStringIsCorrectWithNumericAndAlphabeticAndSpecialSymbolsInput() {
-        assertEquals(Huffman.encodeString("!!! dddd ?? dd ? !! ddd333 99999UUUUUcwqdfjdkpw"), "0100100101101010101011001110111110101011001111100"
-                + "100101101010100110011001101100010010010010010000000000000001"
-                + "1110011101111001101111011111101011111111100011101");
+        assertEquals(Huffman.encodeString("!!! dddd ?? dd ? !! ddd333 99999UUUUUcwqdfjdkpw"),
+        "0100100101101010101011001110111110101011001111100"
+        + "100101101010100110011001101100010010010010010000000000000001"
+        + "1110011101111001101111011111101011111111100011101");
     }
 
     @Test
