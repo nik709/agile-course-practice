@@ -23,7 +23,7 @@ public class PrimeNumberFinder {
         String prefix = "";
         int realStart = Math.max(startSpan, 2);
         for (int i = realStart; i < endSpan; i++) {
-            if (isOriginalPrimeNumber(i) || isNotDividePrimeNumber(i)) {
+            if (isOriginalPrimeNumber(i) || isNotDivideNumberWithoutRemainder(i)) {
                 result.append(prefix)
                         .append(i);
                 prefix = " ";
@@ -39,7 +39,7 @@ public class PrimeNumberFinder {
                 || number == Originals.SEVEN.number);
     }
 
-    private boolean isNotDividePrimeNumber(final int number) {
+    private boolean isNotDivideNumberWithoutRemainder(final int number) {
         return (number % Originals.TWO.number != 0
                 && number % Originals.THREE.number != 0
                 && number % Originals.FIVE.number != 0

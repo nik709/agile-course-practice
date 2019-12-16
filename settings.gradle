@@ -57,6 +57,8 @@ project(":code/temperature-converter/ViewModel").name = "temperature-converter-V
 include "code/temperature-converter/View"
 project(":code/temperature-converter/View").name = "temperature-converter-View"
 // Власов Антон
+include "code/prime-number/Model"
+project(":code/prime-number/Model").name = "prime-number-Model"
 // Гречухин Никита
 include "code/fractioncalculator"
 project(":code/fractioncalculator").name = "fractioncalculator"
@@ -232,6 +234,3 @@ include "code/stack/View"
 project(":code/stack/View").name = "stack-View"
 include "code/stack/ViewModel"
 project(":code/stack/ViewModel").name = "stack-ViewModel"
-// Prime Number
-include "code/prime-number/Model"
-project(":code/prime-number/Model").name = "prime-number-Model"

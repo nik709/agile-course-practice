@@ -30,63 +30,63 @@ public class PrimeNumberFinderTest {
     }
 
     @Test
-    public void cannotFindNumber01() {
+    public void cannotFindPrimeNumberBefore2() {
         var finder = new PrimeNumberFinder(0, 2);
         var result = finder.findNumbers();
         assertEquals("", result);
     }
 
     @Test
-    public void canFindNumber1() {
+    public void canFindPrimeNumber1() {
         var finder = new PrimeNumberFinder(0, 3);
         var result = finder.findNumbers();
         assertEquals("2", result);
     }
 
     @Test
-    public void canFindNumber3() {
+    public void canFindPrimeNumber3() {
         var finder = new PrimeNumberFinder(0, 4);
         var result = finder.findNumbers();
         assertEquals("2 3", result);
     }
 
     @Test
-    public void canFindNumber5() {
+    public void canFindPrimeNumber5() {
         var finder = new PrimeNumberFinder(0, 6);
         var result = finder.findNumbers();
         assertEquals("2 3 5", result);
     }
 
     @Test
-    public void canFindNumber7() {
+    public void canFindPrimeNumber7() {
         var finder = new PrimeNumberFinder(0, 8);
         var result = finder.findNumbers();
         assertEquals("2 3 5 7", result);
     }
 
     @Test
-    public void canFindNumber11() {
+    public void canFindPrimeNumber11() {
         var finder = new PrimeNumberFinder(0, 12);
         var result = finder.findNumbers();
         assertEquals("2 3 5 7 11", result);
     }
 
     @Test
-    public void canFindNumber101() {
+    public void canFindPrimeNumber101() {
         var finder = new PrimeNumberFinder(0, 102);
         var result = finder.findNumbers();
         assertTrue(result.contains(" 101"));
     }
 
     @Test
-    public void canFindNumber907() {
+    public void canFindPrimeNumber907() {
         var finder = new PrimeNumberFinder(0, 1000);
         var result = finder.findNumbers();
         assertTrue(result.contains(" 907"));
     }
 
     @Test
-    public void canFindNumbersTill100() {
+    public void canFindPrimeNumbersTill100() {
         var finder = new PrimeNumberFinder(0, 100);
         var result = finder.findNumbers();
         assertEquals(
