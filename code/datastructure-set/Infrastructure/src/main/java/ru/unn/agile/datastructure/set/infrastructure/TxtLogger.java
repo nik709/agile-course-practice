@@ -14,6 +14,7 @@ import java.util.Locale;
 
 public class TxtLogger implements Logger {
     private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
+    private static final String SEPARATOR = " >> ";
     private final BufferedWriter writer;
     private final String filename;
 
@@ -29,13 +30,13 @@ public class TxtLogger implements Logger {
         writer = logWriter;
     }
 
-    private static String now() {
-        return new SimpleDateFormat(DATE_FORMAT_NOW, Locale.ENGLISH).format(new Date());
-    }
-
     @Override public void log(final String message) {
         try {
-            writer.write(now() + " > " + message);
+            writer.write(
+                    new SimpleDateFormat(DATE_FORMAT_NOW, Locale.ENGLISH).format(new Date())
+                            + SEPARATOR
+                            + message
+            );
             writer.newLine();
             writer.flush();
         } catch (Exception e) {
@@ -44,19 +45,18 @@ public class TxtLogger implements Logger {
     }
 
     @Override public List<String> getLog() {
-        var log = new ArrayList<String>();
-        try {
-            var reader = new BufferedReader(new FileReader(filename));
-            var line = reader.readLine();
+        return new ArrayList<>() {{
+            try {
+                var reader = new BufferedReader(new FileReader(filename));
+                var line = reader.readLine();
 
-            while (line != null) {
-                log.add(line);
-                line = reader.readLine();
+                while (line != null) {
+                    add(line);
+                    line = reader.readLine();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return log;
+        }};
     }
 }
