@@ -24,7 +24,7 @@ public class CurrencyConverterTest {
 
     @Test
     public void canConvertEuroToDollar() {
-        var expectedDollar = 112.00000000000001;
+        var expectedDollar = 112;
         assertEquals(expectedDollar,
                 CurrencyConverter.convert(CurrencyPair.EURO_TO_DOLLAR, 100), delta);
     }
