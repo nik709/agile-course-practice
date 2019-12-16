@@ -1,18 +1,14 @@
 package ru.unn.agile.currencyconverter.model;
 
-public class CurrencyConverter {
-    private CurrencyPair currencyPair;
-    private double currency;
+public final class CurrencyConverter {
 
-    public CurrencyConverter(final CurrencyPair currencyPair, final double currency) {
-        if (currency <= 0) {
-            throw new IllegalArgumentException("Currency should be positive!");
-        }
-        this.currencyPair = currencyPair;
-        this.currency = currency;
+    private CurrencyConverter() {
     }
 
-    public double convert() {
+    public static double convert(final CurrencyPair currencyPair, final double currency) {
+        if (currency < 0) {
+            throw new IllegalArgumentException("Currency should be positive!");
+        }
         return currency * currencyPair.getExchange();
     }
 }

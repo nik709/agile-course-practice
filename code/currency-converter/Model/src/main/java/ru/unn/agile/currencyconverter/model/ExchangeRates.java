@@ -1,6 +1,6 @@
 package ru.unn.agile.currencyconverter.model;
 
-public final class ExchangeRates {
+final class ExchangeRates {
     static final double DOLLAR_TO_EURO = 0.89;
     static final double DOLLAR_TO_RUBLE = 62.55;
     static final double RUBLE_TO_EURO = 0.014;

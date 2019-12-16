@@ -8,7 +8,7 @@ public enum CurrencyPair {
     DOLLAR_TO_RUBLE(ExchangeRates.DOLLAR_TO_RUBLE),
     DOLLAR_TO_EURO(ExchangeRates.DOLLAR_TO_EURO);
 
-    private double exchange;
+    private final double exchange;
 
     CurrencyPair(final double exchange) {
         this.exchange = exchange;

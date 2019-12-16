@@ -199,6 +199,8 @@ project(":code/priority-queue").name = "priority-queue"
 include "code/polygon-area"
 project(":code/polygon-area").name = "polygon-area-Model"
 // Федорова Дарья
+include "code/currency-converter/Model"
+project(":code/currency-converter/Model").name = "currency-converter-Model"
 // datastructure-set
 include "code/datastructure-set/Model"
 project(":code/datastructure-set/Model").name = "datastructure-set-Model"
@@ -236,6 +238,3 @@ include "code/stack/View"
 project(":code/stack/View").name = "stack-View"
 include "code/stack/ViewModel"
 project(":code/stack/ViewModel").name = "stack-ViewModel"
-// Currency Converter
-include "code/currency-converter/Model"
-project(":code/currency-converter/Model").name = "currency-converter-Model"
