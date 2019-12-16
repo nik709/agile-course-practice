@@ -61,6 +61,8 @@ project(":code/temperature-converter/View").name = "temperature-converter-View"
 include "code/fractioncalculator"
 project(":code/fractioncalculator").name = "fractioncalculator"
 // Гришин Дмитрий
+include "code/cross-sections/Model"
+project(":code/cross-sections/Model").name = "cross-sections-Model"
 // sorting
 include "code/sorting/Model"
 project(":code/sorting/Model").name = "sorting-Model"
