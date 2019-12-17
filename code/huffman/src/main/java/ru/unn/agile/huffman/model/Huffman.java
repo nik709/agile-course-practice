@@ -8,16 +8,13 @@ import java.util.stream.Collectors;
 import ru.unn.agile.huffman.model.node.*;
 
 public final class Huffman {
-    private static String encodedString;
-    private static String decodedString;
+    private static String encodedString = "";
+    private static String decodedString = "";
 
     public static final String CODE_0 = "0";
     public static final String CODE_1 = "1";
 
-    private Huffman() {
-        encodedString = "";
-        decodedString = "";
-    }
+    private Huffman() {}
 
     private static Map<Character, Node> buildAlphabet() {
         Map<Character, Integer> numberOfAppearances = new HashMap<>();

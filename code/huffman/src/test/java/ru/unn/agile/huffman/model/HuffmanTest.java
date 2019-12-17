@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 public class HuffmanTest {
     @Test
     public void encodedStringIsEmptyIfHuffmanCreatedWithEmptyString() {
-        Huffman.encodeString("");
         assertTrue(Huffman.encodeString("").equals(""));
     }
 
