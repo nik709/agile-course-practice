@@ -39,8 +39,8 @@ public class TxtLogger implements Logger {
             );
             writer.newLine();
             writer.flush();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

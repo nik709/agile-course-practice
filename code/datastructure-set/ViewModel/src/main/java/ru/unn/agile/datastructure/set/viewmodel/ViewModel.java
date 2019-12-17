@@ -168,7 +168,8 @@ public class ViewModel {
     }
 
     static final class LogMessages {
-        private LogMessages() {}
+        private LogMessages() {
+        }
 
         static final String ADD_PRESSED = "Add button pressed";
         static final String REMOVE_PRESSED = "Remove button pressed";

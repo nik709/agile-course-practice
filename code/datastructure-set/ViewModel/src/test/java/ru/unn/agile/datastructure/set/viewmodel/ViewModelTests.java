@@ -7,16 +7,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ViewModelTests {
-    protected ViewModel viewModel;
+
+    private ViewModel viewModel;
 
     @Before
     public void setUp() {
-        viewModel = new ViewModel(new FakeLogger());
+        setViewModel(new ViewModel(new FakeLogger()));
     }
 
     @After
     public void tearDown() {
         viewModel = null;
+    }
+
+    protected void setViewModel(final ViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Test

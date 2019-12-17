@@ -6,7 +6,7 @@ import java.util.List;
 public class FakeLogger implements Logger {
     private List<String> log = new ArrayList<>();
 
-    @Override public void log(String message) {
+    @Override public void log(final String message) {
         log.add(message);
     }
 
