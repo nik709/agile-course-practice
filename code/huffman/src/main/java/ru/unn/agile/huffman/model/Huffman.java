@@ -14,7 +14,7 @@ public final class Huffman {
     public static final String CODE_0 = "0";
     public static final String CODE_1 = "1";
 
-    private Huffman() {}
+    private Huffman() { }
 
     private static Map<Character, Node> buildAlphabet() {
         Map<Character, Integer> numberOfAppearances = new HashMap<>();
