@@ -1,5 +1,8 @@
 package ru.unn.agile.primenumber.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrimeNumberFinder {
 
     private int startSpan;
@@ -18,18 +21,15 @@ public class PrimeNumberFinder {
         this.startSpan = startSpan;
     }
 
-    public String findNumbers() {
-        StringBuilder result = new StringBuilder();
-        String prefix = "";
+    public List<Integer> findNumbers() {
+        List<Integer> result = new ArrayList<>();
         int realStart = Math.max(startSpan, 2);
         for (int i = realStart; i < endSpan; i++) {
             if (isOriginalPrimeNumber(i) || isNotDivideNumberWithoutRemainder(i)) {
-                result.append(prefix)
-                        .append(i);
-                prefix = " ";
+                result.add(i);
             }
         }
-        return result.toString();
+        return result;
     }
 
     private boolean isOriginalPrimeNumber(final int number) {

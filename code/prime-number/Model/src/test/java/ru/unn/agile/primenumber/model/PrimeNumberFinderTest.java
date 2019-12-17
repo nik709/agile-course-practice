@@ -2,6 +2,9 @@ package ru.unn.agile.primenumber.model;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,64 +36,82 @@ public class PrimeNumberFinderTest {
     public void cannotFindPrimeNumberBefore2() {
         var finder = new PrimeNumberFinder(0, 2);
         var result = finder.findNumbers();
-        assertEquals("", result);
+        List<Integer> expectedResult = new ArrayList<>();
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber1() {
         var finder = new PrimeNumberFinder(0, 3);
         var result = finder.findNumbers();
-        assertEquals("2", result);
+        List<Integer> expectedResult = new ArrayList<>() {{
+            add(2);
+        }};
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber3() {
         var finder = new PrimeNumberFinder(0, 4);
         var result = finder.findNumbers();
-        assertEquals("2 3", result);
+        List<Integer> expectedResult = new ArrayList<>() {{
+            add(2);
+            add(3);
+        }};
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber5() {
         var finder = new PrimeNumberFinder(0, 6);
         var result = finder.findNumbers();
-        assertEquals("2 3 5", result);
+        List<Integer> expectedResult = new ArrayList<>() {{
+            add(2);
+            add(3);
+            add(5);
+        }};
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber7() {
         var finder = new PrimeNumberFinder(0, 8);
         var result = finder.findNumbers();
-        assertEquals("2 3 5 7", result);
+        List<Integer> expectedResult = new ArrayList<>() {{
+            add(2);
+            add(3);
+            add(5);
+            add(7);
+        }};
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber11() {
         var finder = new PrimeNumberFinder(0, 12);
         var result = finder.findNumbers();
-        assertEquals("2 3 5 7 11", result);
+        List<Integer> expectedResult = new ArrayList<>() {{
+            add(2);
+            add(3);
+            add(5);
+            add(7);
+            add(11);
+        }};
+        assertEquals(expectedResult, result);
     }
 
     @Test
     public void canFindPrimeNumber101() {
         var finder = new PrimeNumberFinder(0, 102);
         var result = finder.findNumbers();
-        assertTrue(result.contains(" 101"));
+        assertTrue(result.contains(101));
     }
 
     @Test
     public void canFindPrimeNumber907() {
         var finder = new PrimeNumberFinder(0, 1000);
         var result = finder.findNumbers();
-        assertTrue(result.contains(" 907"));
+        assertTrue(result.contains(907));
     }
 
-    @Test
-    public void canFindPrimeNumbersTill100() {
-        var finder = new PrimeNumberFinder(0, 100);
-        var result = finder.findNumbers();
-        assertEquals(
-                "2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97",
-                result);
-    }
 }
