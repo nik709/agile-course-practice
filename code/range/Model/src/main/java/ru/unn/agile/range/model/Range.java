@@ -23,8 +23,8 @@ public class Range {
         }
     }
 
-    public boolean isContainsSet(final IntegerSet set) {
-        for (int element : set.getValues()) {
+    public boolean isContainsSet(final int[] set) {
+        for (int element : set) {
             if (!this.isContainsValue(element)) {
                 return false;
             }
@@ -36,12 +36,12 @@ public class Range {
         return number >= startingElement && number <= finiteElement;
     }
 
-    public IntegerSet getAllPoints() {
+    public int[] getAllPoints() {
         int[] points = new int[finiteElement - startingElement + 1];
         for (int i = startingElement; i <= finiteElement; i++) {
             points[i - startingElement] = i;
         }
-        return new IntegerSet(points);
+        return points;
     }
 
     public boolean isContainRange(final Range range) {
@@ -49,13 +49,13 @@ public class Range {
             && this.finiteElement >= range.finiteElement;
     }
 
-    public IntegerSet endPoints() {
-        return new IntegerSet("{" + startingElement + "," + finiteElement + "}");
+    public int[] endPoints() {
+        return new int[]{startingElement, finiteElement};
     }
 
     public boolean overlapsRange(final Range range) {
-        long matchElements = Arrays.stream(range.getAllPoints().getValues())
-                .filter(x -> Arrays.stream(this.getAllPoints().getValues()).anyMatch(y -> y == x))
+        long matchElements = Arrays.stream(range.getAllPoints())
+                .filter(x -> Arrays.stream(this.getAllPoints()).anyMatch(y -> y == x))
                 .count();
         return matchElements > 0;
     }
