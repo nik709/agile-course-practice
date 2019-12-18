@@ -49,7 +49,7 @@ public class PopkovKirillTest {
         ComplexNumber complexNumber2 = new ComplexNumber("2", "3");
         ComplexNumber complexNumber3 = complexNumber1.add(complexNumber2);
 
-        assertEquals(complexNumber3, new ComplexNumber(3,5));
+        assertEquals(complexNumber3, new ComplexNumber(3, 5));
     }
 
     @Test
@@ -58,6 +58,6 @@ public class PopkovKirillTest {
         ComplexNumber complexNumber2 = new ComplexNumber("2", "-3");
         ComplexNumber complexNumber3 = complexNumber1.multiply(complexNumber2);
 
-        assertEquals(complexNumber3, new ComplexNumber(8,1));
+        assertEquals(complexNumber3, new ComplexNumber(8, 1));
     }
 }
