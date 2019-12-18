@@ -20,7 +20,7 @@ public class RangeTest {
         assertFalse(range.isContainsValue(11));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void throwWhenInitRangeIncorrectly() {
         new Range("[11,11)");
     }

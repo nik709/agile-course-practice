@@ -19,7 +19,7 @@ public class Range {
             finiteElement--;
         }
         if (startingElement > finiteElement) {
-            throw new RuntimeException("No numbers in the given interval!");
+            throw new IllegalArgumentException("No numbers in the given interval!");
         }
     }
 
