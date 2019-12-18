@@ -10,56 +10,54 @@ public class PopkovKirillTest {
 
     @Test
     public void initComplexNumberWithEmptyConstructor() {
-        ComplexNumber cn = new ComplexNumber();
+        ComplexNumber complexNumber = new ComplexNumber();
 
-        assertEquals("0.0 + 0.0i", cn.toString());
+        assertEquals("0.0 + 0.0i", complexNumber.toString());
     }
 
     @Test
     public void getRealPartOfComplexNumber() {
-        ComplexNumber cn = new ComplexNumber(1, 2);
+        ComplexNumber complexNumber = new ComplexNumber(1, 2);
 
-        assertEquals(1.0, cn.getReal(), delta);
+        assertEquals(1.0, complexNumber.getReal(), delta);
     }
 
     @Test
     public void getImaginaryPartOfComplexNumber() {
-        ComplexNumber cn = new ComplexNumber(1, 2);
+        ComplexNumber complexNumber = new ComplexNumber(1, 2);
 
-        assertEquals(2.0, cn.getImaginary(), delta);
+        assertEquals(2.0, complexNumber.getImaginary(), delta);
     }
 
     @Test
     public void getRealPartOfInitWithStringsComplexNumber() {
-        ComplexNumber cn = new ComplexNumber("1", "2");
+        ComplexNumber complexNumber = new ComplexNumber("1", "2");
 
-        assertEquals(1.0, cn.getReal(), delta);
+        assertEquals(1.0, complexNumber.getReal(), delta);
     }
 
     @Test
     public void getImaginaryPartOfInitWithStringsComplexNumber() {
-        ComplexNumber cn = new ComplexNumber("1", "2");
+        ComplexNumber complexNumber = new ComplexNumber("1", "2");
 
-        assertEquals(2.0, cn.getImaginary(), delta);
+        assertEquals(2.0, complexNumber.getImaginary(), delta);
     }
 
     @Test
     public void checkAdditionOfComplexNumbers() {
-        ComplexNumber cn1 = new ComplexNumber("1", "2");
-        ComplexNumber cn2 = new ComplexNumber("2", "3");
-        ComplexNumber cn3 = cn1.add(cn2);
+        ComplexNumber complexNumber1 = new ComplexNumber("1", "2");
+        ComplexNumber complexNumber2 = new ComplexNumber("2", "3");
+        ComplexNumber complexNumber3 = complexNumber1.add(complexNumber2);
 
-        assertEquals(3.0, cn3.getReal(), delta);
-        assertEquals(5.0, cn3.getImaginary(), delta);
+        assertEquals(complexNumber3, new ComplexNumber(3,5));
     }
 
     @Test
     public void checkMultiplicationOfComplexNumbers() {
-        ComplexNumber cn1 = new ComplexNumber("1", "2");
-        ComplexNumber cn2 = new ComplexNumber("2", "-3");
-        ComplexNumber cn3 = cn1.multiply(cn2);
+        ComplexNumber complexNumber1 = new ComplexNumber("1", "2");
+        ComplexNumber complexNumber2 = new ComplexNumber("2", "-3");
+        ComplexNumber complexNumber3 = complexNumber1.multiply(complexNumber2);
 
-        assertEquals(8.0, cn3.getReal(), delta);
-        assertEquals(1.0, cn3.getImaginary(), delta);
+        assertEquals(complexNumber3, new ComplexNumber(8,1));
     }
 }
