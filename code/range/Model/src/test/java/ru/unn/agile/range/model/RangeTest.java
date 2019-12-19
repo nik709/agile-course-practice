@@ -9,17 +9,17 @@ import static org.junit.Assert.*;
 public class RangeTest {
 
     @Test
-    public void rangeContainsIntegerValue() {
+    public void containsIntegerValue() {
         Range range = new Range("  [  10 , 11 )   ");
 
-        assertTrue(range.isContainsValue(10));
+        assertTrue(range.containsValue(10));
     }
 
     @Test
-    public void rangeNotContainsIntegerValue() {
+    public void notContainsIntegerValue() {
         Range range = new Range("[10,11)");
 
-        assertFalse(range.isContainsValue(11));
+        assertFalse(range.containsValue(11));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -28,128 +28,128 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeContainsSetOfIntegers() {
+    public void containsSetOfIntegers() {
         Range range = new Range("[10,15)");
 
-        assertTrue(range.isContainsSet(new int[]{10, 11, 13}));
+        assertTrue(range.containsSet(new int[]{10, 11, 13}));
     }
 
     @Test
-    public void rangeNotContainsSetWhenOneElementContains() {
+    public void notContainsSetWhenOneElementContains() {
         Range range = new Range(" [ 10 , 15 ) ");
 
-        assertFalse(range.isContainsSet(new int[]{10, 16}));
+        assertFalse(range.containsSet(new int[]{10, 16}));
     }
 
     @Test
-    public void rangeNotContainsSetOfIntegers() {
+    public void notContainsSetOfIntegers() {
         Range range = new Range("[10,15)");
 
-        assertFalse(range.isContainsSet(new int[]{9, 16}));
+        assertFalse(range.containsSet(new int[]{9, 16}));
     }
 
     @Test
-    public void rangeGetNotAllPointsWhenMissedPoints() {
+    public void canGetAllPointsWhenMissedPoints() {
         Range range = new Range("[10,15)");
 
-        assertNotEquals(Arrays.toString(range.getAllPoints()), Arrays.toString(new int[]{10, 14}));
+        assertNotEquals(Arrays.toString(new int[]{10, 14}), Arrays.toString(range.getAllPoints()));
     }
 
     @Test
-    public void rangeGetNotAllPointsWhenExtraPoints() {
+    public void canGetAllPointsWhenExtraPoints() {
         Range range = new Range("(10,15)");
 
-        assertNotEquals(Arrays.toString(range.getAllPoints()),
-                Arrays.toString(new int[]{10, 11, 12, 13, 14, 15}));
+        assertNotEquals(Arrays.toString(new int[]{10, 11, 12, 13, 14, 15}),
+                Arrays.toString(range.getAllPoints()));
     }
 
     @Test
-    public void rangeGetAllPoints() {
+    public void canGetAllPoints() {
         Range range = new Range("[10,15)");
 
-        assertEquals(Arrays.toString(range.getAllPoints()),
-                Arrays.toString(new int[]{10, 11, 12, 13, 14}));
+        assertEquals(Arrays.toString(new int[]{10, 11, 12, 13, 14}),
+                Arrays.toString(range.getAllPoints()));
     }
 
     @Test
-    public void rangeDoesNotContainAnotherRange1() {
+    public void cantContainRangeWithLargerEndElement() {
         Range range = new Range("[10,15)");
 
-        assertFalse(range.isContainRange(new Range("[9,16]")));
+        assertFalse(range.containRange(new Range("[9,16]")));
     }
 
     @Test
-    public void rangeDoesNotContainAnotherRange2() {
+    public void cantContainRangeWithLesserStartElement() {
         Range range = new Range("[10,15)");
 
-        assertFalse(range.isContainRange(new Range("[9,13]")));
+        assertFalse(range.containRange(new Range("[9,13]")));
     }
 
     @Test
-    public void rangeDoesNotContainAnotherRange3() {
+    public void cantContainLargerRange() {
         Range range = new Range("[10,15)");
 
-        assertFalse(range.isContainRange(new Range("[11,16]")));
+        assertFalse(range.containRange(new Range("[11,16]")));
     }
 
     @Test
-    public void rangeContainsAnotherRange() {
+    public void canContainLesserRange() {
         Range range = new Range("[10,15)");
 
-        assertTrue(range.isContainRange(new Range("[11,13]")));
+        assertTrue(range.containRange(new Range("[11,13]")));
     }
 
     @Test
-    public void rangeEndPointsNegativeTest1() {
+    public void cantGetEndPointsWhenNonInclusiveBoundaries() {
         Range range = new Range("(10,15)");
 
-        assertNotEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{10, 15}));
+        assertNotEquals(Arrays.toString(new int[]{10, 15}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsNegativeTest2() {
+    public void cantGetEndPointsWhenInclusiveBoundaries() {
         Range range = new Range("[10,15]");
 
-        assertNotEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{11, 14}));
+        assertNotEquals(Arrays.toString(new int[]{11, 14}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsNegativeTest3() {
+    public void cantGetEndPointsWhenEndBoundaryIsInclusive() {
         Range range = new Range("(10,15]");
 
-        assertNotEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{11, 14}));
+        assertNotEquals(Arrays.toString(new int[]{11, 14}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsNegativeTest4() {
+    public void cantGetEndPointsWhenStartBoundaryIsInclusive() {
         Range range = new Range("[10,15)");
 
-        assertNotEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{11, 14}));
+        assertNotEquals(Arrays.toString(new int[]{11, 14}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsPositiveTest1() {
+    public void canGetEndPointsWhenStartBoundaryIsInclusive() {
         Range range = new Range("[10,15)");
 
-        assertEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{10, 14}));
+        assertEquals(Arrays.toString(new int[]{10, 14}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsPositiveTest2() {
+    public void canGetEndPointsWhenInclusiveBoundaries() {
         Range range = new Range("[10,15]");
 
-        assertEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{10, 15}));
+        assertEquals(Arrays.toString(new int[]{10, 15}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeEndPointsPositiveTest3() {
+    public void canGetEndPointsWhenNonInclusiveBoundaries() {
         Range range = new Range("(10,15)");
 
-        assertEquals(Arrays.toString(range.endPoints()), Arrays.toString(new int[]{11, 14}));
+        assertEquals(Arrays.toString(new int[]{11, 14}), Arrays.toString(range.endPoints()));
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangeNegativeTest1() {
+    public void cantOverlapsWithRangeWithInclusiveStartBoundary() {
         Range range1 = new Range("[10,15)");
         Range range2 = new Range("[15,20)");
 
@@ -157,7 +157,7 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangeNegativeTest2() {
+    public void cantOverlapsWithRangeWithNonInclusiveStartBoundary() {
         Range range1 = new Range("[10,15]");
         Range range2 = new Range("(15,20)");
 
@@ -165,7 +165,7 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangeNegativeTest3() {
+    public void cantOverlapsWithRangeWithNonInclusiveEndBoundary() {
         Range range1 = new Range("[10,15]");
         Range range2 = new Range("(5,10)");
 
@@ -173,7 +173,7 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangeNegativeTest4() {
+    public void cantOverlapsWithRangeWhenOverlapsIsMissing() {
         Range range1 = new Range("[11,15]");
         Range range2 = new Range("(5,9)");
 
@@ -181,7 +181,7 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangePositiveTest1() {
+    public void canOverlapsWithRangeWhenOverlapsIsPresent() {
         Range range1 = new Range("[11,15]");
         Range range2 = new Range("(9,19)");
 
@@ -189,23 +189,7 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeOverlapsWithAnotherRangePositiveTest2() {
-        Range range1 = new Range("[11,15]");
-        Range range2 = new Range("(13,19)");
-
-        assertTrue(range1.overlapsRange(range2));
-    }
-
-    @Test
-    public void rangeOverlapsWithAnotherRangePositiveTest3() {
-        Range range1 = new Range("[11,20]");
-        Range range2 = new Range("(5,19)");
-
-        assertTrue(range1.overlapsRange(range2));
-    }
-
-    @Test
-    public void rangeOverlapsWithAnotherRangePositiveTest4() {
+    public void canOverlapsWithSameRange() {
         Range range1 = new Range("[11,20]");
         Range range2 = new Range("[11,20]");
 
@@ -213,27 +197,27 @@ public class RangeTest {
     }
 
     @Test
-    public void rangeEqualsWithAnotherRangePositiveTest1() {
+    public void canEqualsWithSameRange() {
         Range range1 = new Range("[11,20]");
         Range range2 = new Range("[11,20]");
 
-        assertTrue(range1.equals(range2));
+        assertEquals(range1, range2);
     }
 
     @Test
-    public void rangeEqualsWithAnotherRangePositiveTest2() {
+    public void canEqualsWithRangeWithNonInclusiveBoundaries() {
         Range range1 = new Range("[11,20]");
         Range range2 = new Range("(10,21)");
 
-        assertTrue(range1.equals(range2));
+        assertEquals(range1, range2);
     }
 
     @Test
-    public void rangeEqualsWithAnotherRangeNegativeTest() {
+    public void cantEqualsWithAnotherRange() {
         Range range1 = new Range("[11,20]");
         Range range2 = new Range("(11,20)");
 
-        assertFalse(range1.equals(range2));
+        assertNotEquals(range1, range2);
     }
 
 }

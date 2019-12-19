@@ -23,16 +23,16 @@ public class Range {
         }
     }
 
-    public boolean isContainsSet(final int[] set) {
+    public boolean containsSet(final int[] set) {
         for (int element : set) {
-            if (!this.isContainsValue(element)) {
+            if (!this.containsValue(element)) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean isContainsValue(final int number) {
+    public boolean containsValue(final int number) {
         return number >= startingElement && number <= finiteElement;
     }
 
@@ -44,7 +44,7 @@ public class Range {
         return points;
     }
 
-    public boolean isContainRange(final Range range) {
+    public boolean containRange(final Range range) {
         return this.startingElement <= range.startingElement
             && this.finiteElement >= range.finiteElement;
     }
