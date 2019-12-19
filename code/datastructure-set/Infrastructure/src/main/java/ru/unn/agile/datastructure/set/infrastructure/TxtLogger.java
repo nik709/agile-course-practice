@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class TxtLogger implements Logger {
-    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
-    private static final String SEPARATOR = " >> ";
+    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss.SSS";
+    private static final String LOG_FORMAT = "%s >> %s";
     private final BufferedWriter writer;
     private final String filename;
 
@@ -32,10 +32,11 @@ public class TxtLogger implements Logger {
 
     @Override public void log(final String message) {
         try {
-            writer.write(
-                    new SimpleDateFormat(DATE_FORMAT_NOW, Locale.ENGLISH).format(new Date())
-                            + SEPARATOR
-                            + message
+            writer.write(String.format(
+                    LOG_FORMAT,
+                    new SimpleDateFormat(DATE_FORMAT_NOW, Locale.ENGLISH).format(new Date()),
+                    message
+                    )
             );
             writer.newLine();
             writer.flush();
