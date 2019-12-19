@@ -9,42 +9,42 @@ public class PopkovKirillTest {
     private final double delta = 0.001;
 
     @Test
-    public void initComplexNumberWithEmptyConstructor() {
+    public void canInitWithEmptyConstructor() {
         ComplexNumber complexNumber = new ComplexNumber();
 
         assertEquals("0.0 + 0.0i", complexNumber.toString());
     }
 
     @Test
-    public void getRealPartOfComplexNumber() {
+    public void canGetRealPart() {
         ComplexNumber complexNumber = new ComplexNumber(1, 2);
 
         assertEquals(1.0, complexNumber.getReal(), delta);
     }
 
     @Test
-    public void getImaginaryPartOfComplexNumber() {
+    public void canGetImaginaryPart() {
         ComplexNumber complexNumber = new ComplexNumber(1, 2);
 
         assertEquals(2.0, complexNumber.getImaginary(), delta);
     }
 
     @Test
-    public void getRealPartOfInitWithStringsComplexNumber() {
+    public void canGetRealPartWithStringInConstructor() {
         ComplexNumber complexNumber = new ComplexNumber("1", "2");
 
         assertEquals(1.0, complexNumber.getReal(), delta);
     }
 
     @Test
-    public void getImaginaryPartOfInitWithStringsComplexNumber() {
+    public void canGetImaginaryPartWithStringInConstructor() {
         ComplexNumber complexNumber = new ComplexNumber("1", "2");
 
         assertEquals(2.0, complexNumber.getImaginary(), delta);
     }
 
     @Test
-    public void checkAdditionOfComplexNumbers() {
+    public void canAddComplexNumbers() {
         ComplexNumber complexNumber1 = new ComplexNumber("1", "2");
         ComplexNumber complexNumber2 = new ComplexNumber("2", "3");
         ComplexNumber complexNumber3 = complexNumber1.add(complexNumber2);
@@ -53,7 +53,7 @@ public class PopkovKirillTest {
     }
 
     @Test
-    public void checkMultiplicationOfComplexNumbers() {
+    public void canMultiplyComplexNumbers() {
         ComplexNumber complexNumber1 = new ComplexNumber("1", "2");
         ComplexNumber complexNumber2 = new ComplexNumber("2", "-3");
         ComplexNumber complexNumber3 = complexNumber1.multiply(complexNumber2);
