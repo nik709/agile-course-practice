@@ -23,20 +23,20 @@ public class TxtLogger implements ILogger {
         BufferedWriter logWriter = null;
         try {
             logWriter = new BufferedWriter(new FileWriter(filename));
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception error) {
+            error.printStackTrace();
         }
         writer = logWriter;
     }
 
     @Override
-    public void log(final String s) {
+    public void log(final String logMessage) {
         try {
-            writer.write(now() + " > " + s);
+            writer.write(now() + " > " + logMessage);
             writer.newLine();
             writer.flush();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
         }
     }
 
@@ -53,8 +53,8 @@ public class TxtLogger implements ILogger {
                 log.add(line);
                 line = reader.readLine();
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
         }
         return log;
     }
