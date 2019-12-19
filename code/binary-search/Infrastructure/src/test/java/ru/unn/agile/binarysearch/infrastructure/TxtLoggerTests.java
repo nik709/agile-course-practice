@@ -34,7 +34,7 @@ public class TxtLoggerTests {
     }
 
     @Test
-    public void DateAndTimeContainInLog() {
+    public void dateAndTimeContainInLog() {
         String testMessage = "Test message for check";
 
         txtLogger.log(testMessage);
