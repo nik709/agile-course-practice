@@ -170,4 +170,42 @@ public class ViewModelTests {
 
         assertNotNull(viewModel);
     }
+
+    @Test
+    public void canSetDefaultLog() {
+        assertEquals(0, viewModel.getLog().size());
+    }
+
+    @Test
+    public void CorrectLogWhenSearchUnexistKey() {
+        String expectedLogMessage = "Result: Key not found";
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("4");
+
+        viewModel.search();
+
+        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
+    }
+
+    @Test
+    public void CorrectLogWhenSearchExistKey() {
+        String expectedLogMessage = "Result: Found key, index 2";
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("3");
+
+        viewModel.search();
+
+        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
+    }
+
+    @Test
+    public void CorrectLogWhenSearchKeyInUnsortedArray() {
+        String expectedLogMessage = "Result: Array not sorted";
+        viewModel.setArrayInputProperty("3,2,1");
+        viewModel.setElementInputProperty("2");
+
+        viewModel.search();
+
+        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
+    }
 }

@@ -56,6 +56,10 @@ public class ViewModel {
         }
     }
 
+    public final List<String> getLog() {
+        return logger.getLog();
+    }
+
     public StringProperty arrayInputProperty() {
         return arrayInput;
     }
@@ -104,10 +108,13 @@ public class ViewModel {
         int index = binarySearch.search(key);
         if (index == binarySearch.NOT_FOUND) {
             result.set("Key not found");
+            logger.log("Result: " + "Key not found");
         } else if (index == binarySearch.NOT_SORTED) {
             result.set("Array not sorted");
+            logger.log("Result: " + "Array not sorted");
         } else {
             result.set("Found key, index " + Integer.toString(index));
+            logger.log("Result: Found key, index " + Integer.toString(index));
         }
     }
 
