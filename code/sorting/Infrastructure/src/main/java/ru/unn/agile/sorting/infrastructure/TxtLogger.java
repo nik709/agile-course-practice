@@ -36,28 +36,28 @@ public class TxtLogger implements ISortingLogger {
     @Override
     public void log(final String s) {
         try {
-            writer.write(now() + " > " + s);
+            writer.write("[" + now() + "] " + s);
             writer.newLine();
             writer.flush();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
     @Override
     public List<String> getLog() {
-        BufferedReader reader;
+        BufferedReader bufferedReader;
         ArrayList<String> log = new ArrayList<String>();
         try {
-            reader = new BufferedReader(new FileReader(filename));
-            String line = reader.readLine();
+            bufferedReader = new BufferedReader(new FileReader(filename));
+            String line = bufferedReader.readLine();
 
             while (line != null) {
                 log.add(line);
-                line = reader.readLine();
+                line = bufferedReader.readLine();
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
 
         return log;
