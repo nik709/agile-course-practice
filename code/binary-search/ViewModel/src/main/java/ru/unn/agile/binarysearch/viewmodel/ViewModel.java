@@ -60,7 +60,7 @@ public class ViewModel {
     }
 
     public final List<String> getLog() {
-        return logger.getLog();
+        return logger.getLogList();
     }
 
     public StringProperty arrayInputProperty() {
@@ -105,18 +105,18 @@ public class ViewModel {
 
     public void setArrayInputProperty(final String input) {
         logger.log("Update Input, array: " + input);
-        log.set(String.join(";\n", logger.getLog()));
+        log.set(String.join(";\n", logger.getLogList()));
         arrayInput.set(input);
     }
 
     public void setElementInputProperty(final String input) {
         logger.log("Update Input, element: " + input);
-        log.set(String.join(";\n", logger.getLog()));
+        log.set(String.join(";\n", logger.getLogList()));
         elementInput.set(input);
     }
     private void setResultProperty(final String res) {
         logger.log("Result: " + res);
-        log.set(String.join(";\n", logger.getLog()));
+        log.set(String.join(";\n", logger.getLogList()));
         result.set(res);
     }
 
@@ -164,7 +164,7 @@ public class ViewModel {
     }
 
     private void updateLogs() {
-        List<String> fullLog = logger.getLog();
+        List<String> fullLog = logger.getLogList();
         String record = new String("");
         for (String log : fullLog) {
             record += log + "\n";

@@ -39,7 +39,7 @@ public class TxtLoggerTests {
 
         txtLogger.log(testMessage);
 
-        String logMessage = txtLogger.getLog().get(0);
+        String logMessage = txtLogger.getLogList().get(0);
         assertTrue(logMessage.matches("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} > .*"));
     }
 
@@ -49,19 +49,19 @@ public class TxtLoggerTests {
 
         txtLogger.log(testMessage);
 
-        String logMessage = txtLogger.getLog().get(0);
+        String logMessage = txtLogger.getLogList().get(0);
         assertTrue(logMessage.matches(".*" + logMessage + "$"));
     }
 
     @Test
     public void canWriteSeveralLogMessages() {
-        String[] testMessages = {"Test message #1", "Test message #2"};
+        String[] testMessagesString = {"Test message #1, Test message #2"};
 
-        for (String testMessage : testMessages) {
+        for (String testMessage : testMessagesString) {
             txtLogger.log(testMessage);
         }
 
-        List<String> logMessages = txtLogger.getLog();
+        List<String> logMessages = txtLogger.getLogList();
         for (int i = 0; i < logMessages.size(); i++) {
             String logMessage = logMessages.get(i);
             assertTrue(logMessage.matches(".*" + logMessage + "$"));

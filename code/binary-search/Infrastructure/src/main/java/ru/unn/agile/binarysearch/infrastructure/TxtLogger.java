@@ -2,37 +2,37 @@ package ru.unn.agile.binarysearch.infrastructure;
 
 import ru.unn.agile.binarysearch.viewmodel.ILogger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 public class TxtLogger implements ILogger {
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
-    private final String filename;
+    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
     private final BufferedWriter writer;
+    private final String filename;
 
     public TxtLogger(final String filename) {
         this.filename = filename;
+
         BufferedWriter logWriter = null;
         try {
             logWriter = new BufferedWriter(new FileWriter(filename));
-        } catch (Exception exc) {
-            System.out.println(exc.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         writer = logWriter;
     }
 
-    private static String now() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_FORMAT, Locale.ENGLISH);
-        return sdf.format(calendar.getTime());
-    }
-
     @Override
-    public void log(final String message) {
+    public void log(final String s) {
         try {
-            writer.write(now() + " > " + message);
+            writer.write(now() + " > " + s);
             writer.newLine();
             writer.flush();
         } catch (Exception e) {
@@ -41,9 +41,11 @@ public class TxtLogger implements ILogger {
     }
 
     @Override
-    public List<String> getLog() {
-        BufferedReader reader;
+    public List<String> getLogList() {
+
         ArrayList<String> log = new ArrayList<String>();
+        BufferedReader reader;
+
         try {
             reader = new BufferedReader(new FileReader(filename));
             String line = reader.readLine();
@@ -55,5 +57,11 @@ public class TxtLogger implements ILogger {
             System.out.println(e.getMessage());
         }
         return log;
+    }
+
+    private static String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW, Locale.ENGLISH);
+        return sdf.format(cal.getTime());
     }
 }
