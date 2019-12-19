@@ -3,6 +3,7 @@ package ru.unn.agile.binarysearch.viewmodel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class ViewModelTests {
@@ -95,7 +96,7 @@ public class ViewModelTests {
     @Test
     public void canSearchExistingKey() {
 
-        String expected = "Found key, index 1";
+        String expected = "Found key, index 1 ;";
 
         viewModel.setArrayInputProperty("1,2,3");
         viewModel.setElementInputProperty("2");
@@ -107,7 +108,7 @@ public class ViewModelTests {
     @Test
     public void canSearchNonExistingKey() {
 
-        String expected = "Key not found";
+        String expected = "Key not found ;";
 
         viewModel.setArrayInputProperty("1,2,3");
         viewModel.setElementInputProperty("4");
@@ -119,7 +120,7 @@ public class ViewModelTests {
     @Test
     public void canSearchKeyWithNonSortedArray() {
 
-        String expected = "Array not sorted";
+        String expected = "Array not sorted ;";
 
         viewModel.setArrayInputProperty("3,2,1");
         viewModel.setElementInputProperty("3");
@@ -181,35 +182,67 @@ public class ViewModelTests {
     }
 
     @Test
-    public void CorrectLogWhenSearchUnexistKey() {
-        String expectedLogMessage = "Result: Key not found";
+    public void correctLogWhenSearchUnexistKey() {
         viewModel.setArrayInputProperty("1,2,3");
         viewModel.setElementInputProperty("4");
 
         viewModel.search();
+        String message = viewModel.getLog().get(2);
 
-        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
+        assertTrue(message.matches(".*" + "Result: Key not found" + ".*"));
     }
 
     @Test
-    public void CorrectLogWhenSearchExistKey() {
-        String expectedLogMessage = "Result: Found key, index 2";
-        viewModel.setArrayInputProperty("1,2,3");
-        viewModel.setElementInputProperty("3");
-
-        viewModel.search();
-
-        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
-    }
-
-    @Test
-    public void CorrectLogWhenSearchKeyInUnsortedArray() {
-        String expectedLogMessage = "Result: Array not sorted";
+    public void correctLogWhenSearchKeyInUnsortedArray() {
         viewModel.setArrayInputProperty("3,2,1");
         viewModel.setElementInputProperty("2");
 
         viewModel.search();
+        String message = viewModel.getLog().get(2);
 
-        assertEquals(expectedLogMessage, viewModel.getLog().get(0));
+        assertTrue(message.matches(".*" + "Result: Array not sorted" + ".*"));
+    }
+
+    @Test
+    public void logContainsProperMessageAfterSearch() {
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("3");
+
+        viewModel.search();
+        String message = viewModel.getLog().get(2);
+
+        assertTrue(message.matches(".*" + "Result: " + ".*"));
+    }
+
+    @Test
+    public void logContainsInputArrayAfterSearch() {
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("3");
+
+        viewModel.search();
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*" + viewModel.arrayInputProperty().get() + ".*"));
+    }
+
+    @Test
+    public void logContainsInputElementAfterSearch() {
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("3");
+
+        viewModel.search();
+        String message = viewModel.getLog().get(1);
+        assertTrue(message.matches(".*" + viewModel.elementInputProperty().get() + ".*"));
+    }
+
+    @Test
+    public void canPutSeveralLogMessages() {
+        viewModel.setArrayInputProperty("1,2,3");
+        viewModel.setElementInputProperty("3");
+
+        viewModel.search();
+        viewModel.search();
+        viewModel.search();
+
+        assertEquals(5, viewModel.getLog().size());
     }
 }
