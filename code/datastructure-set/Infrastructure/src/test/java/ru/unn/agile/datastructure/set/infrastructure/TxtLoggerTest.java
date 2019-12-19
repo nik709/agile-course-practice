@@ -4,13 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 import static ru.unn.agile.datastructure.set.infrastructure.RegexMatcher.matchesPattern;
 
 public class TxtLoggerTest {
@@ -25,15 +21,6 @@ public class TxtLoggerTest {
     @After
     public void tearDown() {
         logger = null;
-    }
-
-    @Test
-    public void canCreateLogFile() {
-        try {
-            new BufferedReader(new FileReader(FILE_NAME));
-        } catch (FileNotFoundException e) {
-            fail("File " + FILE_NAME + " wasn't found!");
-        }
     }
 
     @Test
