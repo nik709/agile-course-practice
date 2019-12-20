@@ -20,7 +20,7 @@ public class RegexMatcher extends BaseMatcher {
 
     public void describeTo(final Description description) {
         if (description != null) {
-            description.appendText("matches regex = ");
+            description.appendText("regex = ");
             description.appendText(regexStr);
         }
     }
