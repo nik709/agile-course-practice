@@ -222,6 +222,8 @@ include "code/datastructure-set/View"
 project(":code/datastructure-set/View").name = "datastructure-set-View"
 include "code/datastructure-set/ViewModel"
 project(":code/datastructure-set/ViewModel").name = "datastructure-set-ViewModel"
+include "code/datastructure-set/Infrastructure"
+project(":code/datastructure-set/Infrastructure").name = "datastructure-set-Infrastructure"
 // Arabic Roman Converter
 include "code/arabic-roman-converter/Model"
 project(":code/arabic-roman-converter/Model").name = "arabic-roman-converter-Model"
