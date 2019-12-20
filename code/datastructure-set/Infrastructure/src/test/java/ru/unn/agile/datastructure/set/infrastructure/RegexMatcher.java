@@ -5,19 +5,24 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 public class RegexMatcher extends BaseMatcher {
-    private final String regex;
+    private final String regexStr;
 
     private RegexMatcher(final String regex) {
-        this.regex = regex;
+        this.regexStr = regex;
     }
 
     public boolean matches(final Object o) {
-        return ((String) o).matches(regex);
+        if (o instanceof String) {
+            return ((String) o).matches(regexStr);
+        }
+        return false;
     }
 
     public void describeTo(final Description description) {
-        description.appendText("matches regex = ");
-        description.appendText(regex);
+        if (description != null) {
+            description.appendText("matches regex = ");
+            description.appendText(regexStr);
+        }
     }
 
     @SuppressWarnings(value = "unchecked")
