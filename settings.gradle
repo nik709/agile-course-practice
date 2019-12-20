@@ -66,6 +66,8 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 include "code/cross-sections/Model"
 project(":code/cross-sections/Model").name = "cross-sections-Model"
 // sorting
+include "code/sorting/Infrastructure"
+project(":code/sorting/Infrastructure").name = "sorting-Infrastructure"
 include "code/sorting/Model"
 project(":code/sorting/Model").name = "sorting-Model"
 include "code/sorting/View"
